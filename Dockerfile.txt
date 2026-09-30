@@ -1,0 +1,78 @@
+# =============================================================================
+# Watanabe Illusion VLM Research — Docker image for A100 (x86_64)
+# =============================================================================
+# Sister image to the default Dockerfile (which targets DGX Spark / GB10).
+# Identical layout, identical base, identical pinned package versions.
+# The ONLY differences are:
+#   - TORCH_CUDA_ARCH_LIST is 8.0 (A100 / Ampere / sm_80)
+#     instead of 12.0 (GB10 / Blackwell / sm_121)
+#   - Reads requirements.a100.txt instead of requirements.txt
+#
+# Why a separate file rather than build-args:
+#   - The build context already includes a Dockerfile that pins sm_121.
+#     A user new to the project should be able to look at Dockerfile.a100
+#     and understand the entire A100 setup in one glance, without having
+#     to read build commands or remember --build-arg values.
+#   - Reproducibility for the paper: each machine has exactly one canonical
+#     Dockerfile, and the paper can cite each by name.
+#
+# Base: NVIDIA NGC PyTorch container (25.11-py3)
+#   - Same tag as DGX Spark; NGC publishes both linux/amd64 and linux/arm64
+#     manifests under this tag, so `docker pull` selects the right arch
+#     automatically on each machine.
+#   - Provides PyTorch 2.10, CUDA 13.0, cuDNN, NCCL.
+#   - Includes numpy, Pillow, matplotlib, tqdm already.
+#
+# Usage (on the A100 host):
+#   # Build (run from ~/watanabe-illusion/)
+#   docker build -f Dockerfile.a100 -t watanabe-illusion:a100 .
+#
+#   # Run (interactive shell)
+#   docker run --rm -it --gpus=all \
+#     --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 \
+#     -v ~/watanabe-illusion:/workspace \
+#     -v ~/watanabe-illusion/hf_cache:/root/.cache/huggingface \
+#     -w /workspace \
+#     watanabe-illusion:a100
+#
+# =============================================================================
+
+FROM nvcr.io/nvidia/pytorch:25.11-py3
+
+# -----------------------------------------------------------------------------
+# Environment variables
+# -----------------------------------------------------------------------------
+
+# A100 = sm_80 (Ampere). Anything CUDA-compiled inside the image (e.g. future
+# flash-attn, bitsandbytes from source) will be built for this capability.
+ENV TORCH_CUDA_ARCH_LIST="8.0"
+
+# Enable faster HuggingFace downloads when hf_transfer is installed
+ENV HF_HUB_ENABLE_HF_TRANSFER=1
+
+# -----------------------------------------------------------------------------
+# Python packages
+# -----------------------------------------------------------------------------
+# IMPORTANT: The following packages are ALREADY provided by the NGC base image
+# with sm_80-compatible builds. They must NOT be reinstalled via pip, as doing
+# so could replace them with PyPI versions that may behave differently:
+#   - torch, torchvision, torchaudio
+#   - numpy, Pillow, matplotlib, tqdm
+#
+# Only packages genuinely missing from the base are listed in
+# requirements.a100.txt. Versions are pinned to match the DGX Spark
+# environment that produced the existing N=60 results, so that A100 runs
+# are a clean replication on a different machine and different VLM, with
+# all other software factors held constant.
+# -----------------------------------------------------------------------------
+
+COPY requirements.a100.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+# -----------------------------------------------------------------------------
+# Working directory (mounted from host at runtime)
+# -----------------------------------------------------------------------------
+WORKDIR /workspace
+
+# Default command: interactive bash shell
+CMD ["/bin/bash"]
