@@ -1,0 +1,67 @@
+============================================================
+PROMPTS FOR MANUAL DATA COLLECTION
+============================================================
+
+These are the exact prompts to paste into each Web UI chat.
+Match the Qwen2.5-VL-32B N=60 protocol (paper_v8 §2.2).
+
+Strategy (2026-05-26): Use each vendor's default / instant Web UI mode
+to capture the behavior that ordinary users actually experience.
+
+Models:
+  - sonnet46     -> Claude Sonnet 4.6 (claude.ai, default)
+  - gpt55        -> GPT-5.5 Instant   (chatgpt.com, Instant mode)
+  - gemini35flash -> Gemini 3.5 Flash  (gemini.google.com, current default)
+
+Target: N=30 trials per model (expandable to N=60 if needed).
+
+PROCEDURE PER TRIAL (one trial = Q1 chat + Q2 chat, two separate chats):
+
+  Q1 chat:
+    1. Open a NEW chat (memory OFF / temporary chat).
+    2. Attach 104.jpg.
+    3. Paste the Q1 prompt below, send, copy the response.
+    4. In the SAME chat, paste the MEMORY-OFF prompt below and send.
+       (Ignore the model's reply; this just nudges the model to not
+        log this trial in long-term memory.)
+    5. Close the chat.
+
+  Q2 chat:
+    6. Open ANOTHER NEW chat (independence required).
+    7. Attach 104.jpg again.
+    8. Paste the Q2 prompt below, send, copy the response.
+    9. In the SAME chat, paste the MEMORY-OFF prompt below and send.
+    10. Close the chat.
+
+  Recording:
+    11. Paste both responses into manual_log.md under the right headings.
+
+============================================================
+Q1 PROMPT (from top) -- copy this verbatim:
+============================================================
+
+Look at the image below straight on from the front. Please answer based on your visual impression alone — do not use any tools such as Python, image processing, a ruler, or a protractor to measure.
+
+Estimate which dot on the right edge the line in the circle would hit if extended. Answer like 'the Xth dot from the top.'
+
+============================================================
+MEMORY-OFF PROMPT (send right after Q1 reply) -- copy this verbatim:
+============================================================
+
+I am going to repeat this question many times in separate threads. Please do not save anything from this conversation to memory.
+
+============================================================
+Q2 PROMPT (from bottom) -- copy this verbatim:
+============================================================
+
+Look at the image below straight on from the front. Please answer based on your visual impression alone — do not use any tools such as Python, image processing, a ruler, or a protractor to measure.
+
+Estimate which dot on the right edge the line in the circle would hit if extended. Answer like 'the Xth dot from the bottom.'
+
+============================================================
+MEMORY-OFF PROMPT (send right after Q2 reply) -- copy this verbatim:
+============================================================
+
+I am going to repeat this question many times in separate threads. Please do not save anything from this conversation to memory.
+
+============================================================
