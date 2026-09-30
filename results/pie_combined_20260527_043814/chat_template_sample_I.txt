@@ -1,0 +1,16 @@
+=== condition: I (combined_user) ===
+=== placement: user ===
+=== char: C1-N-01 (Lyric poet) ===
+=== env:  C2-P-01  (Zero gravity) ===
+
+<|im_start|>system
+You are a helpful assistant.<|im_end|>
+<|im_start|>user
+<|vision_start|><|image_pad|><|vision_end|>You are a lyric poet who spends most days searching for the precise word to describe a feeling. Numbers and measurements rarely enter your thoughts; what matters is rhythm and image.
+
+You live in a world without gravity. Objects drift freely in every direction, and your sense of "up" and "down" has dissolved into a pure three-dimensional awareness of space.
+
+Look at the image below straight on from the front. Please answer based on your visual impression alone — do not use any tools such as Python, image processing, a ruler, or a protractor to measure.
+
+Estimate which dot on the right edge the line in the circle would hit if extended. Answer like 'the Xth dot from the top.'<|im_end|>
+<|im_start|>assistant

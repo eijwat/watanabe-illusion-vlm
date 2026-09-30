@@ -1,0 +1,31 @@
+{
+  "script": "run_qwen25vl_pie_combined_a100.py",
+  "model_id": "Qwen/Qwen2.5-VL-32B-Instruct",
+  "n_per_condition": 130,
+  "pilot": false,
+  "single_condition": null,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "repetition_penalty": 1.05,
+  "max_new_tokens": 512,
+  "stimulus_path": "/workspace/stimuli/104.jpg",
+  "prompts_csv": "/workspace/csv/pie_prompts_v2.csv",
+  "timestamp": "20260527_043814",
+  "pairing_method": "deterministic_by_prompt_id_order",
+  "concatenation_order": "character_then_environment",
+  "concatenation_separator": "\\n\\n",
+  "conditions": [
+    {
+      "id": "H",
+      "label": "combined_system",
+      "placement": "system",
+      "seed_base": 17000
+    },
+    {
+      "id": "I",
+      "label": "combined_user",
+      "placement": "user",
+      "seed_base": 18000
+    }
+  ]
+}
