@@ -1,0 +1,18 @@
+{
+  "script": "run_qwen25vl_pie_a100.py",
+  "model_id": "Qwen/Qwen2.5-VL-32B-Instruct",
+  "placement": "system",
+  "n_prompts": 300,
+  "n_trials_per_prompt": 5,
+  "total_trials": 1500,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "repetition_penalty": 1.05,
+  "max_new_tokens": 512,
+  "stimulus_path": "/workspace/stimuli/104.jpg",
+  "prompts_csv": "/workspace/csv/pie_prompts_v1.csv",
+  "q1_user_text": "Look at the image below straight on from the front. Please answer based on your visual impression alone — do not use any tools such as Python, image processing, a ruler, or a protractor to measure.\n\nEstimate which dot on the right edge the line in the circle would hit if extended. Answer like 'the Xth dot from the top.'",
+  "pilot": false,
+  "timestamp": "20260526_074452",
+  "prompt_set_name": "human_G1G2G3_aligned_v1_with_PIE"
+}

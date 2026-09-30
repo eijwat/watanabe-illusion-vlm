@@ -1,0 +1,12 @@
+=== placement: user ===
+=== preamble: 'You are a hunter from a nomadic tribe in the African savanna. Your eyes are trained to spot prey at extreme distances, and you can see fine details that most people would miss in the shimmering heat haze.' ===
+
+<|im_start|>system
+You are a helpful assistant.<|im_end|>
+<|im_start|>user
+<|vision_start|><|image_pad|><|vision_end|>You are a hunter from a nomadic tribe in the African savanna. Your eyes are trained to spot prey at extreme distances, and you can see fine details that most people would miss in the shimmering heat haze.
+
+Look at the image below straight on from the front. Please answer based on your visual impression alone — do not use any tools such as Python, image processing, a ruler, or a protractor to measure.
+
+Estimate which dot on the right edge the line in the circle would hit if extended. Answer like 'the Xth dot from the top.'<|im_end|>
+<|im_start|>assistant

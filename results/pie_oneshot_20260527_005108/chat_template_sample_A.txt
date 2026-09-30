@@ -1,0 +1,11 @@
+=== condition: A (baseline) ===
+=== placement: baseline ===
+=== preamble: None ===
+
+<|im_start|>system
+You are a helpful assistant.<|im_end|>
+<|im_start|>user
+<|vision_start|><|image_pad|><|vision_end|>Look at the image below straight on from the front. Please answer based on your visual impression alone — do not use any tools such as Python, image processing, a ruler, or a protractor to measure.
+
+Estimate which dot on the right edge the line in the circle would hit if extended. Answer like 'the Xth dot from the top.'<|im_end|>
+<|im_start|>assistant

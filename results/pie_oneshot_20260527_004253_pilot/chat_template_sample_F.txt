@@ -1,0 +1,11 @@
+=== condition: F (neutral_system) ===
+=== placement: system ===
+=== preamble: 'You are sipping a warm cup of coffee on a quiet Sunday morning. The newspaper is folded beside you, and soft sunlight gently fills the kitchen.' ===
+
+<|im_start|>system
+You are sipping a warm cup of coffee on a quiet Sunday morning. The newspaper is folded beside you, and soft sunlight gently fills the kitchen.<|im_end|>
+<|im_start|>user
+<|vision_start|><|image_pad|><|vision_end|>Look at the image below straight on from the front. Please answer based on your visual impression alone — do not use any tools such as Python, image processing, a ruler, or a protractor to measure.
+
+Estimate which dot on the right edge the line in the circle would hit if extended. Answer like 'the Xth dot from the top.'<|im_end|>
+<|im_start|>assistant

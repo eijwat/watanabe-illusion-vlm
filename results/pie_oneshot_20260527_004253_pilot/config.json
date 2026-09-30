@@ -1,0 +1,65 @@
+{
+  "script": "run_qwen25vl_pie_oneshot_a100.py",
+  "model_id": "Qwen/Qwen2.5-VL-32B-Instruct",
+  "n_per_condition": 130,
+  "pilot": true,
+  "single_condition": null,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "repetition_penalty": 1.05,
+  "max_new_tokens": 512,
+  "stimulus_path": "/workspace/stimuli/104.jpg",
+  "prompts_csv": "/workspace/csv/pie_prompts_v2.csv",
+  "timestamp": "20260527_004253",
+  "conditions": [
+    {
+      "id": "A",
+      "label": "baseline",
+      "category": null,
+      "placement": "baseline",
+      "seed_base": 10000
+    },
+    {
+      "id": "B",
+      "label": "character_system",
+      "category": "character",
+      "placement": "system",
+      "seed_base": 11000
+    },
+    {
+      "id": "C",
+      "label": "character_user",
+      "category": "character",
+      "placement": "user",
+      "seed_base": 12000
+    },
+    {
+      "id": "D",
+      "label": "environment_system",
+      "category": "environment",
+      "placement": "system",
+      "seed_base": 13000
+    },
+    {
+      "id": "E",
+      "label": "environment_user",
+      "category": "environment",
+      "placement": "user",
+      "seed_base": 14000
+    },
+    {
+      "id": "F",
+      "label": "neutral_system",
+      "category": "neutral",
+      "placement": "system",
+      "seed_base": 15000
+    },
+    {
+      "id": "G",
+      "label": "neutral_user",
+      "category": "neutral",
+      "placement": "user",
+      "seed_base": 16000
+    }
+  ]
+}
