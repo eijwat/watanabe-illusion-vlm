@@ -247,7 +247,7 @@ Citation information will be added upon publication.
 
 ## License
 
-TBD (for example, MIT for code and CC BY 4.0 for stimuli and data).
+MIT for code and CC BY 4.0 for stimuli and data
 
 ## Contact
 
