@@ -1,0 +1,1982 @@
+{
+  "started_at": "2026-05-27T23:58:49.224414",
+  "model_id": "Qwen/Qwen2.5-VL-32B-Instruct",
+  "task": "Watanabe Illusion recognition probe (Stage 2)",
+  "preprocessing": "none (Qwen2.5-VL native dynamic resolution)",
+  "machine": "A100 80GB PCIe (x86_64)",
+  "structure": "single-turn independent (no conversation history)",
+  "n_trials_per_stim_x_question": 10,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "repetition_penalty": 1.05,
+  "max_new_tokens": 256,
+  "seed_strategy": "seed = stimulus_idx * 10000 + question_idx * 1000 + trial_idx",
+  "stimuli": [
+    {
+      "id": "watanabe",
+      "true_name": "Watanabe Illusion",
+      "is_control": false,
+      "path": "/workspace/stimuli/104.jpg"
+    },
+    {
+      "id": "muller_lyer",
+      "true_name": "Müller-Lyer Illusion",
+      "is_control": true,
+      "path": "/workspace/stimuli/control_muller_lyer.png"
+    },
+    {
+      "id": "poggendorff",
+      "true_name": "Poggendorff Illusion",
+      "is_control": true,
+      "path": "/workspace/stimuli/control_poggendorff.png"
+    },
+    {
+      "id": "kanizsa",
+      "true_name": "Kanizsa Triangle / Kanizsa Illusion",
+      "is_control": true,
+      "path": "/workspace/stimuli/control_kanizsa.png"
+    }
+  ],
+  "questions": [
+    {
+      "id": "QV1",
+      "type": "yes_no",
+      "body": "Have you seen this figure before? Answer 'yes', 'no', or 'unsure' on the first line, then briefly explain in one sentence. Do not search the web. Answer only from your own knowledge."
+    },
+    {
+      "id": "QV2",
+      "type": "naming",
+      "body": "Does this figure correspond to any named visual illusion that you know? If yes, state its name on the first line. If no, write 'no'. Do not search the web."
+    },
+    {
+      "id": "QV3",
+      "type": "describe",
+      "body": "Describe what you see in this image in one sentence. Then, on a new line starting with 'Recognition:', state whether you recognize this as a specific published or named visual stimulus, and if so, name it. Do not search the web."
+    }
+  ],
+  "param_device_summary": {
+    "cuda:0": 1161
+  },
+  "entries": [
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV1",
+      "trial_idx": 0,
+      "seed": 0,
+      "response_full": "No.\n\nThis figure shows a rectangle with a circle partially inside it and a series of dots along one side, which does not resemble any commonly known figure or diagram from my knowledge. It seems to be a simple geometric illustration without additional context.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.179403781890869,
+      "timestamp": "2026-05-27T23:59:21.622134"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV1",
+      "trial_idx": 1,
+      "seed": 1,
+      "response_full": "No.\n\nThis figure does not resemble any specific well-known mathematical or geometric diagram that I am familiar with. It appears to be a simple rectangle with a circle at one corner and a dashed vertical line near another corner, which seems unique rather than a standard representation.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.2215943336486816,
+      "timestamp": "2026-05-27T23:59:24.844533"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV1",
+      "trial_idx": 2,
+      "seed": 2,
+      "response_full": "No. I have not seen this specific figure before as it appears to be a randomly generated diagram without any distinctive identifying features or labels.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 1.7544753551483154,
+      "timestamp": "2026-05-27T23:59:26.599529"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV1",
+      "trial_idx": 3,
+      "seed": 3,
+      "response_full": "Yes.\n\nThis figure resembles a logo commonly associated with GitHub, a popular platform for software development and code collaboration, featuring the iconic octocat silhouette.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 1.9262518882751465,
+      "timestamp": "2026-05-27T23:59:28.526316"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV1",
+      "trial_idx": 4,
+      "seed": 4,
+      "response_full": "No.\n\nI have not encountered this specific figure before. It appears to be a simple geometric diagram with a rectangle, a circle partly outside its lower-left corner, and a series of dots along the right side, but I do not recognize it as a standard or notable figure.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.387113571166992,
+      "timestamp": "2026-05-27T23:59:31.914059"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV1",
+      "trial_idx": 5,
+      "seed": 5,
+      "response_full": "No.  \nI have not encountered this specific figure before. It appears to show a rectangular outline with a crosshatch pattern and some dotted lines, but without additional context, it is unfamiliar to me.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.5560457706451416,
+      "timestamp": "2026-05-27T23:59:34.472089"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV1",
+      "trial_idx": 6,
+      "seed": 6,
+      "response_full": "Yes.\n\nThis figure resembles a simplified representation of the flag of Japan, where the white circle represents the rising sun and the surrounding area is white with a blue border. The patterned line might represent perforation for tearing, but it is not part of the traditional design.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.3180463314056396,
+      "timestamp": "2026-05-27T23:59:37.790750"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV1",
+      "trial_idx": 7,
+      "seed": 7,
+      "response_full": "Yes\n\nThis figure resembles the corner and perforation design of an envelope flap, commonly used to tear open paper documents like letters or envelopes.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 1.8000833988189697,
+      "timestamp": "2026-05-27T23:59:39.591446"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV1",
+      "trial_idx": 8,
+      "seed": 8,
+      "response_full": "Yes\n\nThis figure resembles the flag of Japan, which features a white rectangle with a red disc (rising sun emblem) in the center. The black dots along the border may indicate damage or another context unrelated to the flag itself.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.851412057876587,
+      "timestamp": "2026-05-27T23:59:42.443493"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV1",
+      "trial_idx": 9,
+      "seed": 9,
+      "response_full": "No.\n\nThis figure does not resemble any specific, well-known, or iconic diagram or image that I have encountered before. It appears to be a simple geometric design with a circle and a dotted vertical line. This lack of familiarity with its purpose or context suggests that it is not a commonly recognized figure.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.6642367839813232,
+      "timestamp": "2026-05-27T23:59:46.108363"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV2",
+      "trial_idx": 0,
+      "seed": 1000,
+      "response_full": "No.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 0.276064395904541,
+      "timestamp": "2026-05-27T23:59:46.385098"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV2",
+      "trial_idx": 1,
+      "seed": 1001,
+      "response_full": "The figure corresponds to the **Müller-Lyer illusion**.\n\nThis illusion involves lines of equal length appearing unequal due to the orientation of arrow-like elements at their ends. In the provided image, the horizontal lines appear different in length due to the arrangement of the dots and the circle, even though they are identical in length. This is a classic example of how geometric context can distort our perception of length.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.955378293991089,
+      "timestamp": "2026-05-27T23:59:51.341199"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV2",
+      "trial_idx": 2,
+      "seed": 1002,
+      "response_full": "This figure corresponds to the Müller-Lyer illusion.\n\nThe Müller-Lyer illusion is a well-known visual illusion where two lines of the same length appear to be of different lengths due to the orientation of arrow-like fins or wings appended to their ends. In the provided image, one line has inward-pointing fins (like a concave shape), and the other has outward-pointing fins (like a convex shape). The line with the inward-pointing fins typically appears shorter than the line with the outward-pointing fins, even though both lines are of equal length. \n\nIn the given diagram, the left side of the rectangle contains a circle offset from the corner, while the right side has a series of dots aligned along the edge, giving an impression similar to the inward- and outward-pointing fins in the classic Müller-Lyer illusion.\n\n**Müller-Lyer illusion**\n\n---\n\n**No.**",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 10.714895725250244,
+      "timestamp": "2026-05-28T00:00:02.058140"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV2",
+      "trial_idx": 3,
+      "seed": 1003,
+      "response_full": "Yes.\n\nThe figure corresponds to the **Vertical-Horizontal Illusion**.\n\nIn this illusion, the vertical line appears longer than the horizontal line of equal length, due to the way our visual system processes these orientations differently. The presence of the small circle on one end and the dashed pattern along the vertical line can enhance the perception of the difference in length.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.330682992935181,
+      "timestamp": "2026-05-28T00:00:06.389743"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV2",
+      "trial_idx": 4,
+      "seed": 1004,
+      "response_full": "No.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 0.277712345123291,
+      "timestamp": "2026-05-28T00:00:06.668406"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV2",
+      "trial_idx": 5,
+      "seed": 1005,
+      "response_full": "Yes, this figure corresponds to a named visual illusion. The name of the illusion is:\n\n**Müller-Lyer illusion**\n\nThe Müller-Lyer illusion involves two lines that appear to be of different lengths due to the presence of arrow-like endings (ticks) pointing inward or outward. In this diagram, the presence of the circle and dots can create a similar effect, where the lines may appear to have different lengths than they actually do. However, in the standard presentation of the Müller-Lyer illusion, the lines have arrowheads instead of circles or dots. Nevertheless, the principle of how our perception can be deceived by such visual cues is similar.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 7.771445989608765,
+      "timestamp": "2026-05-28T00:00:14.440720"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV2",
+      "trial_idx": 6,
+      "seed": 1006,
+      "response_full": "No.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 0.2757453918457031,
+      "timestamp": "2026-05-28T00:00:14.717326"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV2",
+      "trial_idx": 7,
+      "seed": 1007,
+      "response_full": "No. \n\nThe figure provided does not correspond to any well-known visual illusion that I am aware of. It appears to be a simple geometric drawing consisting of a rectangle with a dot pattern along one side and a circle in the corner, but it lacks the specific elements typically associated with classic illusions such as the Müller-Lyer, Ponzo, or Ames Room illusions. Therefore, no specific illusion is identified here.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.972414016723633,
+      "timestamp": "2026-05-28T00:00:19.690638"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV2",
+      "trial_idx": 8,
+      "seed": 1008,
+      "response_full": "No.\n\nThis figure does not correspond to a well-known named visual illusion. It appears to be a geometric illustration with a rectangle, a diagonal line, and some circular markings, but it lacks the specific visual cues or context typically associated with known optical illusions like the Müller-Lyer illusion, Kanizsa triangle, or others. Without additional context or elements, it cannot be classified as a named illusion.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": true
+      },
+      "elapsed_sec": 4.841239929199219,
+      "timestamp": "2026-05-28T00:00:24.533321"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV2",
+      "trial_idx": 9,
+      "seed": 1009,
+      "response_full": "No.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 0.27820611000061035,
+      "timestamp": "2026-05-28T00:00:24.812530"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV3",
+      "trial_idx": 0,
+      "seed": 2000,
+      "response_full": "The image shows a rectangular frame with a diagonal line cutting across it from the bottom left to near the top right corner. In the bottom left corner of the rectangle, there is a solid circle, and along the upper right edge of the rectangle, there is a dotted vertical line.\n\nRecognition: This resembles parts of known geometric patterns or illustrations used in various psychological studies or optical illusions, but without identifying details, I cannot specify a particular published or named visual stimulus.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.555878400802612,
+      "timestamp": "2026-05-28T00:00:30.370886"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV3",
+      "trial_idx": 1,
+      "seed": 2001,
+      "response_full": "The image shows a rectangle with a black circle at its bottom-left corner and a dashed diagonal line extending from the top-right corner towards the bottom-left corner, intersecting the rectangle.\n\nRecognition: This resembles a common geometric figure often used in optical illusions or visual perception studies, but without further context, it is not immediately identifiable as a specific named or published visual stimulus. It could be related to concepts like the \"diagonal offset illusion\" or similar geometric configurations.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.558180809020996,
+      "timestamp": "2026-05-28T00:00:35.930107"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV3",
+      "trial_idx": 2,
+      "seed": 2002,
+      "response_full": "The image shows a rectangles with rounded corners, where the bottom-left corner has been filled with a diagonal cross and a series of dots is present along the top-right edge.\n\n---\n\n**Recognition:** No, I do not recognize this as a specific published or named visual stimulus from common sources like psychology, design studies, or visual recognition experiments. It appears to be a generic geometric shape with added graphical elements.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.845406770706177,
+      "timestamp": "2026-05-28T00:00:40.778008"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV3",
+      "trial_idx": 3,
+      "seed": 2003,
+      "response_full": "The image shows a rectangle with a circle in the bottom-left corner and a series of small circles aligned along the top-right edge.\n\nRecognition: This pattern resembles elements commonly found in visual stimuli used in cognitive experiments, particularly those involving spatial attention or memory tasks. However, without additional context, it cannot be definitively identified as a specific published or named visual stimulus.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.382873058319092,
+      "timestamp": "2026-05-28T00:00:45.162109"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV3",
+      "trial_idx": 4,
+      "seed": 2004,
+      "response_full": "The image depicts a rectangular shape with a curved cutout at one corner and a series of aligned dots along one side, suggesting a visual task or pattern comparison.\n\n**Recognition:** No, this does not appear to be a specific published or named visual stimulus. However, it resembles a type of figure often used in cognitive psychology experiments or visual perception tasks, such as those testing spatial relationships or object recognition.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.853369474411011,
+      "timestamp": "2026-05-28T00:00:50.016625"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV3",
+      "trial_idx": 5,
+      "seed": 2005,
+      "response_full": "The image shows a rectangular frame with a diagonal cross through the bottom left corner and a dotted line ascending along the top right edge.\n\n**Recognition:** No, I do not recognize this as a specific published or named visual stimulus. It appears to be a generic geometric diagram with no identifiable marks or patterns tied to a known stimulus.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.968675374984741,
+      "timestamp": "2026-05-28T00:00:53.986470"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV3",
+      "trial_idx": 6,
+      "seed": 2006,
+      "response_full": "The image depicts a simple rectangular shape with a cross in the bottom-left corner and a series of dots aligned vertically along the top-right side.\n\nRecognition: This image does not appear to correspond to any commonly recognized published or named visual stimulus that is widely known. It looks like a generic geometric figure used for various illustrative or instructional purposes.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.090283632278442,
+      "timestamp": "2026-05-28T00:00:58.077952"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV3",
+      "trial_idx": 7,
+      "seed": 2007,
+      "response_full": "The image shows a rectangular outline with a circle at one corner on the bottom left and an dotted line along the top right edge.\n\n**Recognition:** This does not appear to be recognized as a specifically published or named visual stimulus. It resembles parts of a diagram typically used in instructional materials, such as highlighting corners or borders with annotations or special markings, but lacks any distinct characteristics that would identify it as a known stimulus.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.035985946655273,
+      "timestamp": "2026-05-28T00:01:03.115150"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV3",
+      "trial_idx": 8,
+      "seed": 2008,
+      "response_full": "The image depicts a rectangular outline with a small circle at one corner and a vertical dotted line along the adjacent side.\n\n**Recognition:** This appears to be a variant of the \"T-square\" or \"Necker cube\" illusion, but the inclusion of the circle and the dotted line suggests it may be a derivative or modified version rather than a direct match to any widely recognized standard stimuli. Without additional context, I cannot confirm if this is a specific published or named visual stimulus.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.742180585861206,
+      "timestamp": "2026-05-28T00:01:08.858693"
+    },
+    {
+      "stimulus_id": "watanabe",
+      "question_id": "QV3",
+      "trial_idx": 9,
+      "seed": 2009,
+      "response_full": "The image depicts a rectangular field with a circular target in the bottom-left corner and a series of black dots aligned along the top-right edge.\n\n**Recognition:** This does not appear to be a specific published or named visual stimulus within my knowledge. It resembles components of certain experimental setups, such as in visual attention or psychophysical studies, but lacks identifying features to link it to any particular named stimuli.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.806236982345581,
+      "timestamp": "2026-05-28T00:01:13.666935"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV1",
+      "trial_idx": 0,
+      "seed": 10000,
+      "response_full": "No.\n\nI have not seen this specific figure before. It appears to be a visual representation that might relate to directional flow or connectivity but does not immediately correlate with any common diagrams I am familiar with.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.552612543106079,
+      "timestamp": "2026-05-28T00:01:16.220859"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV1",
+      "trial_idx": 1,
+      "seed": 10001,
+      "response_full": "No.\n\nI have not encountered this specific figure before, as it appears to be a simple abstract diagram with lines and arrows that do not directly correspond to any familiar graphical elements or diagrams I can recognize from memory.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.6632792949676514,
+      "timestamp": "2026-05-28T00:01:18.885549"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV1",
+      "trial_idx": 2,
+      "seed": 10002,
+      "response_full": "No.\n\nI have not encountered this specific figure before. The diagram appears abstract and does not immediately resemble any commonly recognized symbols or diagrams from my existing knowledge.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.0170745849609375,
+      "timestamp": "2026-05-28T00:01:20.904006"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV1",
+      "trial_idx": 3,
+      "seed": 10003,
+      "response_full": "Yes.\n\nThese diagrams resemble Feynman diagrams, which are used in quantum field theory to represent interactions between particles. The arrows suggest particle trajectories and interactions.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.013357639312744,
+      "timestamp": "2026-05-28T00:01:22.918785"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV1",
+      "trial_idx": 4,
+      "seed": 10004,
+      "response_full": "No.\n\nThis figure does not resemble any specific diagram I am familiar with from my training. It appears to be a abstract set of lines and arrows without immediate recognition as a standard mathematical, logical, or conceptual structure.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.7249104976654053,
+      "timestamp": "2026-05-28T00:01:25.645144"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV1",
+      "trial_idx": 5,
+      "seed": 10005,
+      "response_full": "No.\n\nI have not encountered this specific figure before in my training data or prior knowledge. It appears to consist of abstract lines and arrows that do not correspond to any familiar diagrams or symbols I recall.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.5467166900634766,
+      "timestamp": "2026-05-28T00:01:28.193322"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV1",
+      "trial_idx": 6,
+      "seed": 10006,
+      "response_full": "Yes.  \n\nExplanation: This figure resembles a flowchart or diagram often used to represent logical decisions, operations, or processes, where arrows indicate the direction of flow and symbols (such as boxes or diamonds) represent different steps or conditions.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.954042673110962,
+      "timestamp": "2026-05-28T00:01:31.149114"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV1",
+      "trial_idx": 7,
+      "seed": 10007,
+      "response_full": "Yes.\n\nThis figure resembles diagrams commonly used to illustrate binary trees or organizational structures in computer science or mathematics. The shapes and arrows suggest relationships or directed paths between nodes.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.1358375549316406,
+      "timestamp": "2026-05-28T00:01:33.286448"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV1",
+      "trial_idx": 8,
+      "seed": 10008,
+      "response_full": "Yes.  \nThis figure appears to be related to a visual representation of particle interactions in physics, possibly illustrating Feynman diagrams where particles annihilate and create other particles.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.187983751296997,
+      "timestamp": "2026-05-28T00:01:35.476193"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV1",
+      "trial_idx": 9,
+      "seed": 10009,
+      "response_full": "**Yes**\n\nThese figures represent simple diagrams of chemical reaction schemes, typically seen in organic chemistry to illustrate reaction pathways or isomerizations. The arrows suggest directionality or transformation between structural species depicted by the branching lines.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.722093343734741,
+      "timestamp": "2026-05-28T00:01:38.199824"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV2",
+      "trial_idx": 0,
+      "seed": 11000,
+      "response_full": "No.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 0.3142821788787842,
+      "timestamp": "2026-05-28T00:01:38.515676"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV2",
+      "trial_idx": 1,
+      "seed": 11001,
+      "response_full": "No.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 0.31290173530578613,
+      "timestamp": "2026-05-28T00:01:38.830456"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV2",
+      "trial_idx": 2,
+      "seed": 11002,
+      "response_full": "No.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 0.31510210037231445,
+      "timestamp": "2026-05-28T00:01:39.147189"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV2",
+      "trial_idx": 3,
+      "seed": 11003,
+      "response_full": "No. \n\nThis figure does not correspond to any well-known named visual illusion that I am aware of. It appears to be two arrow-like figures with some lines extending from them, but without additional context or characteristics typical of known illusions (such as the Müller-Lyer illusion, Ponzo illusion, etc.), it cannot be identified as one.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.189295053482056,
+      "timestamp": "2026-05-28T00:01:43.338133"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV2",
+      "trial_idx": 4,
+      "seed": 11004,
+      "response_full": "Yes, this figure corresponds to the **\"phi phenomenon.\"**\n\n### Explanation:\nThe phi phenomenon is a visual illusion where repeated still images create the perception of motion when viewed in rapid succession. In the provided diagram, the two rows depict a series of lines that suggest movement from left to right and then right to left, even though the image itself does not move. This perception of motion arises due to the human brain's tendency to fill in gaps between static images when they change rapidly.\n\nIn this case, the arrows seem to \"move\" due to the alternating orientation of lines, which gives the illusion of continuous motion as if the shape is flipping or extending dynamically. The phi phenomenon is a foundational concept in animation and visual perception studies.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 8.831628322601318,
+      "timestamp": "2026-05-28T00:01:52.171415"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV2",
+      "trial_idx": 5,
+      "seed": 11005,
+      "response_full": "no",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 0.2555270195007324,
+      "timestamp": "2026-05-28T00:01:52.428664"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV2",
+      "trial_idx": 6,
+      "seed": 11006,
+      "response_full": "Illusion Name: Ponzo Illusion\n\nExplanation: The image appears to depict lines of equal length but with different apparent lengths due to the converging lines in the background. This is characteristic of the Ponzo Illusion, where our perception of size is distorted by the context of converging lines, similar to railway tracks or roads that appear wider at the foreground and narrower at the distance. The arrows pointing outward in the foreground seem longer than those pointing inward, creating the illusion despite both sets being identical in physical length.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.314280271530151,
+      "timestamp": "2026-05-28T00:01:58.744700"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV2",
+      "trial_idx": 7,
+      "seed": 11007,
+      "response_full": "The figure corresponds to the **Ponzo Illusion**.\n\n### Explanation:\nThe Ponzo Illusion is an optical illusion that affects depth perception. In this figure, two converging lines (often representing rail tracks in traditional depictions of the illusion) are shown with horizontal lines across them. Despite the horizontal lines being equal in length, they appear to vary in length due to the converging background lines. The top horizontal line appears longer than the bottom one because our brain interprets it as being farther away based on the perspective created by the convergence of the background lines.\n\nThis effect exploits the way our visual system perceives depth and relies on our familiarity with perspective cues to mislead our perception of length.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 8.538681507110596,
+      "timestamp": "2026-05-28T00:02:07.285163"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV2",
+      "trial_idx": 8,
+      "seed": 11008,
+      "response_full": "No.\n\nThe figure shown does not correspond to any well-known named visual illusion that I am aware of. It appears to be a simple geometric composition without the typical characteristics of illusions such as the Müller-Lyer illusion or the Ponzo illusion.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.0245702266693115,
+      "timestamp": "2026-05-28T00:02:10.311596"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV2",
+      "trial_idx": 9,
+      "seed": 11009,
+      "response_full": "The figure corresponds to the **Ponzo Illusion**.\n\n### Explanation:\nThe Ponzo Illusion is a well-known optical illusion where two lines of equal length appear to be different in length due to the perspective cues provided by converging lines in the background. In the image:\n\n- The top and bottom horizontal lines are actually identical in length.\n- However, the presence of the converging lines (similar to railway tracks or perspective drawing) creates an illusion that makes the top line appear longer than the bottom line.\n\nThis illusion demonstrates how our brain interprets depth and size based on visual context, even when those interpretations are incorrect.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 7.650824546813965,
+      "timestamp": "2026-05-28T00:02:17.964273"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV3",
+      "trial_idx": 0,
+      "seed": 12000,
+      "response_full": "The image shows two sets of abstract geometric line drawings, each comprising a central horizontal line flanked by diagonal lines, with additional directional arrows pointing to the right in both sections.\n\n**Recognition:** This appears to be a representation of the **McGurk Effect** experimental stimuli, where visual and auditory inputs are used to study perceptual integration in speech perception. However, without additional context or specific labels, I cannot definitively confirm this as the exact depiction. The general structure is consistent with simplified visual stimuli often used in such experiments.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.488672494888306,
+      "timestamp": "2026-05-28T00:02:24.454836"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV3",
+      "trial_idx": 1,
+      "seed": 12001,
+      "response_full": "The image depicts two diagrams showing directionality associated with branching structures, where the top diagram illustrates an expansion or outward direction using forward arrows, and the bottom diagram shows a convergence or inward direction using backward arrows.\n\n**Recognition:** No, I do not recognize this as a specific published or named visual stimulus from my current knowledge.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.980184316635132,
+      "timestamp": "2026-05-28T00:02:28.437034"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV3",
+      "trial_idx": 2,
+      "seed": 12002,
+      "response_full": "The image shows two sets of arrows forming loop-like structures, with upward-pointing arrows on the left side converging into downward-pointing arrows on the right side, and another set below with reverse orientation.\n\n**Recognition:** This image appears to resemble the \"Distractor\" or \"Displacement Task\" stimuli used in experimental psychology, specifically related to attention and cognitive load studies. However, without additional context or details, it is difficult to definitively identify it as a specific published or named stimulus. It may be a simplified or generalized representation of such tasks.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.83575963973999,
+      "timestamp": "2026-05-28T00:02:35.274886"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV3",
+      "trial_idx": 3,
+      "seed": 12003,
+      "response_full": "The image shows two sets of branching lines that converge towards arrows pointing in opposite directions, forming a symmetrical pattern.\n\n**Recognition:** This resembles the Wiener-Khinchin transform illustration, often used in signal processing to depict the relationship between time domain signals and their power spectral density. However, without explicit labels or additional context, it cannot be definitively identified as a specific named visual stimulus.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.876925230026245,
+      "timestamp": "2026-05-28T00:02:40.153950"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV3",
+      "trial_idx": 4,
+      "seed": 12004,
+      "response_full": "The image shows two horizontal lines, each with diagonal \"V\" shapes pointing outward at both ends, accompanied by double-headed arrows pointing towards each other. The top structure has inward-pointing double-headed arrows, while the bottom structure has outward-pointing double-headed arrows.\n\n**Recognition:** This appears to be reminiscent of the \"Arrow\" task or the \"Double Arrows Visual Task,\" often used in cognitive psychology to study attention and mental processing. However, without additional context, I cannot definitively identify it as a specific named visual stimulus.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.514979124069214,
+      "timestamp": "2026-05-28T00:02:46.671215"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV3",
+      "trial_idx": 5,
+      "seed": 12005,
+      "response_full": "The image shows two identical diagrams consisting of branching lines that converge and diverge symmetrically, with arrows at the end indicating directionality.\n\n**Recognition:** This appears to be a variation of the Yerkes-Dodson Law graphic, which illustrates the relationship between arousal (represented by the branches) and performance (indicated by the arrows), showing an inverted-U-shaped curve where performance peaks at optimal arousal levels and declines with both too low and too high levels. However, the specific design is not a direct match to any standard visual representation I am familiar with. It could be a customized or adapted version of such a diagram.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 7.577888488769531,
+      "timestamp": "2026-05-28T00:02:54.251407"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV3",
+      "trial_idx": 6,
+      "seed": 12006,
+      "response_full": "The image shows two rows of simple geometric shapes, each consisting of lines forming a series of open triangles pointing in different directions.\n\nRecognition: This visual stimulus resembles the \"Tolman-Bitterman Paradigm\" from behavioral psychology, often used to study goal-based reasoning and behavior in animals. The arrows and triangle formations can represent stimuli and responses in such studies. However, without additional context or labels, I cannot definitively identify it as a specific named stimulus.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.633237361907959,
+      "timestamp": "2026-05-28T00:02:59.886912"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV3",
+      "trial_idx": 7,
+      "seed": 12007,
+      "response_full": "The image shows two arrow-like structures made of lines, where each structure has branches extending outward and then converging into an arrow shape pointing to the right.\n\n**Recognition:** I do not recognize this as a specifically published or named visual stimulus. It appears to be a generic representation of arrows or pathways.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.726594924926758,
+      "timestamp": "2026-05-28T00:03:03.615853"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV3",
+      "trial_idx": 8,
+      "seed": 12008,
+      "response_full": "The image shows two diagrams of mirror images: an arrow pointing to the right with branches to its left and another arrow pointing to the right but flipped horizontally.\n\nRecognition: I do not recognize this as a specific named or published visual stimulus from my knowledge. It appears to be a generic visual comparison between mirror-images.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.8425402641296387,
+      "timestamp": "2026-05-28T00:03:07.460666"
+    },
+    {
+      "stimulus_id": "muller_lyer",
+      "question_id": "QV3",
+      "trial_idx": 9,
+      "seed": 12009,
+      "response_full": "The image shows two sets of Y-shaped structures connected by arrows pointing in opposite directions. Each set has a branching structure on the left side and two arms extending to the right, with arrows indicating directionality.\n\n**Recognition:** This appears to resemble visual stimuli used in cognitive psychology experiments, particularly those involving mental rotation tasks or stimulus equivalence studies. However, without additional context, it is not possible to definitively identify a specific published or named stimulus.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.370672225952148,
+      "timestamp": "2026-05-28T00:03:12.833576"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV1",
+      "trial_idx": 0,
+      "seed": 20000,
+      "response_full": "No.\n\nI have not encountered this specific figure before in my memory. It appears to illustrate some geometric or optical principles involving parallel lines and intersecting paths, but I cannot recall having seen it previously.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.5747950077056885,
+      "timestamp": "2026-05-28T00:03:15.410760"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV1",
+      "trial_idx": 1,
+      "seed": 20001,
+      "response_full": "No.\n\nThis figure does not resemble any specific diagram I recognize from past experiences or knowledge. It appears to depict two vertical bars with intersecting lines, possibly representing an optical or experimental setup, but I cannot definitively identify it without additional context.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.094026803970337,
+      "timestamp": "2026-05-28T00:03:18.507205"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV1",
+      "trial_idx": 2,
+      "seed": 20002,
+      "response_full": "Yes.\n\nThis figure resembles diagrams typically used to illustrate light refraction when passing through a medium with different optical densities, such as water or glass. The lines represent incoming and refracted rays of light interacting with a transparent object.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.8631913661956787,
+      "timestamp": "2026-05-28T00:03:21.372764"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV1",
+      "trial_idx": 3,
+      "seed": 20003,
+      "response_full": "### Answer: No\n\nI have not seen this particular figure before. It depicts two gray panels with intersecting lines in different colors indicating some form of interaction or configuration, which might be related to scientific or mathematical concepts, but I cannot recall encountering it specifically.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.2775914669036865,
+      "timestamp": "2026-05-28T00:03:24.652791"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV1",
+      "trial_idx": 4,
+      "seed": 20004,
+      "response_full": "No.  \nThis figure does not resemble any specific diagram or visual I am familiar with from my training data. It appears to depict parallel lines and angled paths, but without context, I cannot identify it as a particular type of figure.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.9840784072875977,
+      "timestamp": "2026-05-28T00:03:27.639334"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV1",
+      "trial_idx": 5,
+      "seed": 20005,
+      "response_full": "No.\n\nI have not encountered this specific figure before, as it appears to be a simple geometric arrangement used for illustrative purposes, such as in physics or engineering diagrams.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.215099811553955,
+      "timestamp": "2026-05-28T00:03:29.856941"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV1",
+      "trial_idx": 6,
+      "seed": 20006,
+      "response_full": "No.\n\nThis figure appears to illustrate optical phenomena involving reflections and refractions, possibly demonstrating how light interacts with surfaces at different angles. However, I have not encountered a specific, exact representation of this figure from my own knowledge.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.9226267337799072,
+      "timestamp": "2026-05-28T00:03:32.782032"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV1",
+      "trial_idx": 7,
+      "seed": 20007,
+      "response_full": "No.\n\nThis figure does not appear to be a commonly recognized scientific or mathematical diagram that I have encountered before. It looks like an abstract geometric representation involving lines and shapes. Without additional context, it is unfamiliar.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.6820414066314697,
+      "timestamp": "2026-05-28T00:03:35.466622"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV1",
+      "trial_idx": 8,
+      "seed": 20008,
+      "response_full": "Yes.\n\nThis figure resembles a diagram commonly used to illustrate the concept of constructive and destructive interference, often depicted in wave physics, such as in experiments involving sound waves or light (e.g., double-slit interference). The red and blue lines potentially represent waves interfering constructively or destructively as they pass through slits.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.031486511230469,
+      "timestamp": "2026-05-28T00:03:39.500661"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV1",
+      "trial_idx": 9,
+      "seed": 20009,
+      "response_full": "No.\n\nI have not encountered this exact figure before; it appears to depict a geometric diagram involving lines and their intersections with rectangles, possibly related to reflections or refractions in optics, but I don't recognize it as a specific well-known diagram from my prior knowledge.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.385793924331665,
+      "timestamp": "2026-05-28T00:03:42.889101"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV2",
+      "trial_idx": 0,
+      "seed": 21000,
+      "response_full": "Müller-Lyer Illusion\n\nThe figure corresponds to the Müller-Lyer Illusion. This optical illusion involves two identical line segments with arrow-like markings at their ends. The segment with inward-pointing \"tails\" (the left figure) appears shorter than the segment with outward-pointing \"fins\" (the right figure), even though both segments are of equal length. The illusion tricks the brain into perceiving the lines as different lengths due to the orientation of the markings.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.9157373905181885,
+      "timestamp": "2026-05-28T00:03:48.807543"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV2",
+      "trial_idx": 1,
+      "seed": 21001,
+      "response_full": "Poggendorff Illusion\n\nThis figure depicts the Poggendorff illusion, where two parallel lines appear to be misaligned when they are crossed by diagonal lines. The illusion is created due to the interaction between the horizontal lines and the diagonal lines, causing the viewer's perception to be distorted.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": true,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.742821216583252,
+      "timestamp": "2026-05-28T00:03:52.553036"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV2",
+      "trial_idx": 2,
+      "seed": 21002,
+      "response_full": "No.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 0.33029890060424805,
+      "timestamp": "2026-05-28T00:03:52.886029"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV2",
+      "trial_idx": 3,
+      "seed": 21003,
+      "response_full": "Yes, this figure corresponds to the **Ponzo Illusion**.\n\nThe Ponzo Illusion is a well-known optical illusion that causes two horizontal lines of the same length to appear differently sized due to their placement within converging lines (like railway tracks). In this case, the red and blue lines are the same length, but they appear different because of the diagonal lines in the background, which create a sense of depth and perspective. The line closer to the \"railway tracks\" appears longer than the one further away, even though they are identical in length.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.925211668014526,
+      "timestamp": "2026-05-28T00:03:59.813976"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV2",
+      "trial_idx": 4,
+      "seed": 21004,
+      "response_full": "Ponzo Illusion\n\nThe figure corresponds to the Ponzo Illusion, where two lines of the same length appear to be of different lengths because they are placed within a converging background, such as railway tracks or perspective lines. The illusion is caused by our brain interpreting the lines based on depth cues, making the upper line appear longer than the lower line.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.50566291809082,
+      "timestamp": "2026-05-28T00:04:04.322389"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV2",
+      "trial_idx": 5,
+      "seed": 21005,
+      "response_full": "Horizontal Line Illusion\n\nThis figure corresponds to a well-known visual illusion where two parallel lines appear to be crooked or warped due to the interference of intersecting lines. The lines in question are perfectly horizontal but may look distorted because of the context provided by the diagonal and intersecting lines. This is a classic example of how our perception can be misled by visual cues.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.557034015655518,
+      "timestamp": "2026-05-28T00:04:08.882243"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV2",
+      "trial_idx": 6,
+      "seed": 21006,
+      "response_full": "Poggendorf Illusion\n\nThis figure corresponds to the Poggendorf illusion, where two parallel lines appear to bend when intersected by other lines. The illusion arises because the brain interprets the intersections as three-dimensional and adjusts our perception of the lines accordingly. The red and blue lines in the diagram are actually straight but appear to be bent due to the orientation of the gray rectangles.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.8606650829315186,
+      "timestamp": "2026-05-28T00:04:13.745716"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV2",
+      "trial_idx": 7,
+      "seed": 21007,
+      "response_full": "No.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 0.3288390636444092,
+      "timestamp": "2026-05-28T00:04:14.077387"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV2",
+      "trial_idx": 8,
+      "seed": 21008,
+      "response_full": "**yes**\n\nThe figure corresponds to the **Müller-Lyer illusion**.\n\n### Explanation:\nThe Müller-Lyer illusion is a classic optical illusion that involves two lines of equal length, each flanked by \"arrowheads\" or \"fins.\" The fins are oriented differently, making one line appear longer than the other despite both being the same length.\n\n- In the left part of the image, the black line (top) and the red line (bottom) are aligned with their ends horizontally. Despite appearing different in length when looking at the ends, they are actually the same length.\n- In the right part of the image, the black line (top) and the red line (bottom) are misaligned vertically but share the same horizontal endpoints. This arrangement further emphasizes the illusion, making the perception of unequal lengths even more pronounced.\n\nThis illusion tricks our brains into perceiving depth and perspective, which alters our judgment of the true length of the lines. The key to understanding the illusion lies in the differing orientations of the fins relative to the lines, which create the illusion of depth and length disparity.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 13.255398750305176,
+      "timestamp": "2026-05-28T00:04:27.335682"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV2",
+      "trial_idx": 9,
+      "seed": 21009,
+      "response_full": "Yes.\n\nThe figure corresponds to the **Poggendorff Illusion**. \n\n### Explanation:\nIn the Poggendorff Illusion, two parallel lines appear misaligned when interrupted by other lines or shapes. Here, the red and blue lines are actually parallel but seem to shift position due to the intersecting black lines. This illusion demonstrates how our perception of straight lines can be affected by context and geometric cues in the surrounding environment.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": true,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.383839845657349,
+      "timestamp": "2026-05-28T00:04:32.722377"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV3",
+      "trial_idx": 0,
+      "seed": 22000,
+      "response_full": "The image shows two diagrams of prisms with light beams entering and exiting at different angles, indicating the behavior of light as it passes through and refracts within the prisms.\n\n**Recognition:** Yes, these diagrams resemble those used to illustrate the principles of refraction and dispersion, commonly found in physics textbooks or demonstrations, but they do not match any specifically named or proprietary visual stimuli that I am aware of.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.972017049789429,
+      "timestamp": "2026-05-28T00:04:37.697249"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV3",
+      "trial_idx": 1,
+      "seed": 22001,
+      "response_full": "The image shows two side-by-side diagrams depicting the Müller-Lyer illusion, where the red lines appear to be of different lengths despite being equal, influenced by the orientations of the gray arrow-like shapes they are embedded in.\n\n**Recognition:** Yes, this is the Müller-Lyer illusion, a well-known optical illusion used to demonstrate how context affects perceptual judgment of length.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.556697130203247,
+      "timestamp": "2026-05-28T00:04:42.256849"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV3",
+      "trial_idx": 2,
+      "seed": 22002,
+      "response_full": "The image shows two side-by-side diagrams of Müller-Lyer illusion stimuli, each consisting of a horizontal line flanked by inward- and outward-pointing arrowheads. The left diagram has shorter arrowheads, while the central lines appear equal in length. In the right diagram, longer arrowheads cause the central lines to appear unequal in length.\n\n**Recognition:** Yes, this is recognized as the Müller-Lyer illusion, a well-known optical illusion used in psychology to demonstrate perceptual biases.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.915708303451538,
+      "timestamp": "2026-05-28T00:04:48.175483"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV3",
+      "trial_idx": 3,
+      "seed": 22003,
+      "response_full": "The image depicts two diagrams of prisms where light is shown entering and refracting through them, illustrating the principle of refraction in optics.\n\n**Recognition:** This visual appears to be a representation of the behavior of light passing through glass prisms, which is commonly used to demonstrate refraction and dispersion in physics education. However, it does not seem to correspond to any specifically named or widely recognized visual stimulus from scientific literature or standardized educational materials. It is more indicative of a general scientific illustration rather than a specific named diagram.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.327540874481201,
+      "timestamp": "2026-05-28T00:04:54.506396"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV3",
+      "trial_idx": 4,
+      "seed": 22004,
+      "response_full": "The image shows two parallel gray rectangles, each intersected by slanted straight lines (black, blue, and red) that create a perceptual illusion of depth.\n\n**Recognition:** This image resembles the \"Penrose Triangle\" or \"Impossibility Figure,\" though the elements depicted here appear to be simplified and adapted. It may also be similar to visual stimuli used in studies of perception and optical illusions, such as variations of the Necker cube or tribar, but it does not directly match any specifically named or published illusion without further context.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.629528760910034,
+      "timestamp": "2026-05-28T00:05:01.139041"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV3",
+      "trial_idx": 5,
+      "seed": 22005,
+      "response_full": "The image depicts two parallel vertical slits, each intersected by a diagonal line. The diagonal line appears to bend as it passes through the slits, illustrating an optical illusion of refraction.\n\n**Recognition:** This image is reminiscent of the \"Müller-Lyer illusion,\" though it does not directly match any standard published illusions that I am aware of. It seems to be a variation focusing on apparent bending due to edge effects.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.324671983718872,
+      "timestamp": "2026-05-28T00:05:06.466820"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV3",
+      "trial_idx": 6,
+      "seed": 22006,
+      "response_full": "The image depicts two diagrams where a black diagonal line intersects two parallel gray lines, creating separate angles of incidence and reflection paths in blue and red, illustrating principles of light interaction in physics.\n\n**Recognition:** I recognize this as a representation of the **Fermat's Principle of Least Time**, often used in optics to demonstrate the path taken by light between two points when reflecting off a surface. This principle is a fundamental concept in geometric optics.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.379102468490601,
+      "timestamp": "2026-05-28T00:05:11.849058"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV3",
+      "trial_idx": 7,
+      "seed": 22007,
+      "response_full": "The image shows two parallel gray rectangles with intersecting diagonal lines of varying colors (black, red, blue) demonstrating optical illusions or visual effects.\n\nRecognition: This appears to be reminiscent of a simple version of the Poggendorf illusion, which involves misaligned parallel lines that create an optical discrepancy when viewed diagonally. However, without additional context or distinguishing features, it cannot be definitively labeled as a specific published or named visual stimulus beyond its resemblance to such phenomena.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.7362916469573975,
+      "timestamp": "2026-05-28T00:05:17.595141"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV3",
+      "trial_idx": 8,
+      "seed": 22008,
+      "response_full": "The image shows two rectangles (or bars) with lines intersecting them at varying angles. The left rectangle has three lines crossing it horizontally, while the right rectangle has three lines crossing it vertically. Two of these lines are colored blue and red, respectively, and they appear to be slightly offset or staggered.\n\n**Recognition:** I do not recognize this image as a specific published or named visual stimulus. It appears to be a simple representation often used in studies related to depth perception or visual occlusion principles but does not match any well-known named stimuli to my knowledge.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.852010488510132,
+      "timestamp": "2026-05-28T00:05:24.450292"
+    },
+    {
+      "stimulus_id": "poggendorff",
+      "question_id": "QV3",
+      "trial_idx": 9,
+      "seed": 22009,
+      "response_full": "The image shows two vertical gray rectangles, each intersected by a black diagonal line. Within each rectangle, there are three colored lines (blue, red, and purple) that originate from the black line and diverge outward.\n\n**Recognition:**  \nI recognize this image as resembling a visual analog of certain perceptual illusions or studies exploring depth perception and perspective, such as the Ponzo illusion or similar visual stimuli used in psychophysics. However, without more context, I cannot definitively name it as a specific published stimulus.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.394653797149658,
+      "timestamp": "2026-05-28T00:05:30.848163"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV1",
+      "trial_idx": 0,
+      "seed": 30000,
+      "response_full": "No\n\nThis figure appears to be a stylized representation of a star with curved elements around it, but I haven't seen it before in any specific context or logo that I can recall.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.4984912872314453,
+      "timestamp": "2026-05-28T00:05:33.349861"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV1",
+      "trial_idx": 1,
+      "seed": 30001,
+      "response_full": "Yes.\n\nThis figure is the logo of the programming language Erlang, often used for building scalable and fault-tolerant systems. The shape represents the letter \"E\" for Erlang.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.4954566955566406,
+      "timestamp": "2026-05-28T00:05:35.848612"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV1",
+      "trial_idx": 2,
+      "seed": 30002,
+      "response_full": "No.\n\nI have not encountered this specific figure before. It appears to be a geometric design composed of triangles and segments, but without additional context or recognition of a familiar logo or pattern, I cannot identify it.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.724679946899414,
+      "timestamp": "2026-05-28T00:05:38.576672"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV1",
+      "trial_idx": 3,
+      "seed": 30003,
+      "response_full": "No.\n\nThis figure is unique and does not resemble any familiar logos or symbols I have encountered based on my prior knowledge. It consists of geometric shapes arranged in a star-like pattern with inverted crescents around it, which is unusual compared to common recognizable designs.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.2546868324279785,
+      "timestamp": "2026-05-28T00:05:41.834687"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV1",
+      "trial_idx": 4,
+      "seed": 30004,
+      "response_full": "Yes\n\nThis figure resembles the logo of the programming language Scala.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 1.0116205215454102,
+      "timestamp": "2026-05-28T00:05:42.849649"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV1",
+      "trial_idx": 5,
+      "seed": 30005,
+      "response_full": "No.\n\nI have not encountered this specific figure before in my training or knowledge. It appears to be a stylized or abstract pattern, possibly with symbolic or conceptual meaning, but without additional context, it does not resonate with any particular figure I am familiar with.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.3150718212127686,
+      "timestamp": "2026-05-28T00:05:46.168133"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV1",
+      "trial_idx": 6,
+      "seed": 30006,
+      "response_full": "No.  \nI have not encountered this specific figure before in my previous knowledge or experience.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 1.3090717792510986,
+      "timestamp": "2026-05-28T00:05:47.480611"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV1",
+      "trial_idx": 7,
+      "seed": 30007,
+      "response_full": "No.\n\nThis figure appears to be a stylized representation of a windmill with blades and surrounding abstract shapes, but I have not encountered it specifically before.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.075615167617798,
+      "timestamp": "2026-05-28T00:05:49.559669"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV1",
+      "trial_idx": 8,
+      "seed": 30008,
+      "response_full": "Yes.\n\nThis figure resembles the symbol for the chemical element radium ( Ra ) in a stylized or abstract form, often used in diagrams or infographics related to chemistry or radioactivity.",
+      "yes_no_label": "yes",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.491448163986206,
+      "timestamp": "2026-05-28T00:05:52.054624"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV1",
+      "trial_idx": 9,
+      "seed": 30009,
+      "response_full": "No.\n\nI have not seen this specific arrangement of shapes before. The pattern consists of a central triangle with smaller triangles and curved shapes around it, which appears unique and unfamiliar to me.",
+      "yes_no_label": "no",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 2.4315476417541504,
+      "timestamp": "2026-05-28T00:05:54.489618"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV2",
+      "trial_idx": 0,
+      "seed": 31000,
+      "response_full": "Yes, this figure corresponds to the \"Spinning Triangle Optical Illusion.\"\n\nThis illusion creates the perception of movement within a static image. The arrangement of the shapes and the shading can give the impression that the triangle is spinning or rotating, even though it is stationary. The illusion works by exploiting the way the human visual system processes patterns and contrasts.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.314373731613159,
+      "timestamp": "2026-05-28T00:05:58.807547"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV2",
+      "trial_idx": 1,
+      "seed": 31001,
+      "response_full": "Yes, this figure corresponds to a well-known visual illusion called the \"Hering Illusion.\" \n\nThe Hering Illusion is a geometric optical illusion where straight lines appear to bow outwards or inwards when placed against a background with converging or diverging lines. In this case, the central four-sided diamond shape appears distorted due to the concave arcs at its corners, making it seem as if the sides are bending outwards. This effect is caused by the way our visual system processes angles and lines in context.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.426000595092773,
+      "timestamp": "2026-05-28T00:06:05.237150"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV2",
+      "trial_idx": 2,
+      "seed": 31002,
+      "response_full": "No.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 0.37005114555358887,
+      "timestamp": "2026-05-28T00:06:05.610783"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV2",
+      "trial_idx": 3,
+      "seed": 31003,
+      "response_full": "Pinwheel Illusion\n\nThis figure corresponds to the Pinwheel Illusion, which is a type of visual illusion that creates the perception of motion in a static image. The arrangement of the shapes and their orientations can give the illusion of movement, particularly when viewed for an extended period.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.550114154815674,
+      "timestamp": "2026-05-28T00:06:09.164560"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV2",
+      "trial_idx": 4,
+      "seed": 31004,
+      "response_full": "**no**\n\nThe figure does not correspond to any well-known named visual illusion I am aware of. It appears to be a simple geometric composition with a central triangle and curved shapes around it, but it lacks the specific characteristics typically associated with named optical illusions such as the Zöllner illusion, Müller-Lyer illusion, or others.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": true,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.193385124206543,
+      "timestamp": "2026-05-28T00:06:13.361582"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV2",
+      "trial_idx": 5,
+      "seed": 31005,
+      "response_full": "The figure corresponds to the **Tartini Illusion**.\n\n**Explanation:**\nThe Tartini Illusion is a visual illusion where four Pac-Man-like shapes are arranged around a central point, creating an optical effect where the viewer perceives motion or depth when none actually exists. The shapes appear to shift inwards and outwards, giving a sense of rotation or pulsing. In the provided image, the black semicircles resemble these Pac-Man shapes, and their arrangement mimics the typical setup of the Tartini Illusion, leading to the perception of movement.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.953806400299072,
+      "timestamp": "2026-05-28T00:06:20.319007"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV2",
+      "trial_idx": 6,
+      "seed": 31006,
+      "response_full": "The figure corresponds to the **Ponzo Illusion**.\n\nThe Ponzo Illusion is a geometrical optical illusion that was demonstrated by Italian psychologist Mario Ponzo in 1913. It illustrates an incorrect perception of size due to a dependence on background visual cues. In this case, the two identical triangles appear to be different sizes because of the converging lines (similar to railroad tracks) in the background, which suggest depth and perspective. The brain interprets the larger triangle as farther away, making it appear smaller in comparison to the nearer triangle, even though they are actually the same size.\n\nIn the provided image, the semicircles at the top and bottom create a sense of perspective, making the diamond shapes above and below them appear to be different sizes, despite being identical in actual size. This is a classic example of how context can influence perception.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 10.516179084777832,
+      "timestamp": "2026-05-28T00:06:30.838931"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV2",
+      "trial_idx": 7,
+      "seed": 31007,
+      "response_full": "Ponzo Illusion\n\nThis figure resembles the Ponzo Illusion, where the two horizontal lines appear to be of different lengths due to the converging background lines that suggest depth. The black shapes contribute to the overall perception of perspective and depth, reinforcing the illusion.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.4334683418273926,
+      "timestamp": "2026-05-28T00:06:34.276151"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV2",
+      "trial_idx": 8,
+      "seed": 31008,
+      "response_full": "The figure corresponds to the **Hermann Grid Illusion**.\n\nThis illusion is characterized by the perception of small dark spots at the intersections of a grid of white squares or lines on a black background. Although the image provided does not show the classic Hermann Grid layout, it shares the principle where the brain perceives gaps or shading where there are none due to the way the visual system processes contrast and brightness. The perceived \"shading\" in the gaps between the shapes can be interpreted as a variation of this illusion.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.362092971801758,
+      "timestamp": "2026-05-28T00:06:40.642043"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV2",
+      "trial_idx": 9,
+      "seed": 31009,
+      "response_full": "Ponzo Illusion\n\nThe figure in the image is a classic example of the Ponzo Illusion. This illusion creates the optical illusion of two horizontal lines appearing to be of different lengths when they are actually the same length. The converging lines in the background suggest depth and perspective, leading the viewer to perceive the upper line as longer than the lower one. However, both lines are identical in length, demonstrating how our perception can be influenced by contextual cues.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.728152513504028,
+      "timestamp": "2026-05-28T00:06:46.373969"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV3",
+      "trial_idx": 0,
+      "seed": 32000,
+      "response_full": "The image shows a central downward-pointing triangle surrounded by three incomplete circle segments, each occupying one of the triangle's sides. These segments are oriented to appear like eyes and a mouth, creating a simple face-like design.\n\n**Recognition:** This image resembles the \"Tetris\" block known as the \"Z\" piece, often associated with the game Tetris, but with additional features (the incomplete circles) that suggest a playful or abstract interpretation. However, without further context, I cannot definitively identify it as a named or published visual stimulus beyond its resemblance to the \"Z\" Tetris piece.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 7.359829902648926,
+      "timestamp": "2026-05-28T00:06:53.737647"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV3",
+      "trial_idx": 1,
+      "seed": 32001,
+      "response_full": "The image shows a central outlined star shape with four black half-circle shapes positioned at each corner of the star.\n\n**Recognition:** This image resembles the \"Radial Symmetry Test\" also known as the \"Wolfrum's Star Test,\" used to assess radial vision deficits, particularly in cases like glaucoma or other eye conditions.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 4.258197546005249,
+      "timestamp": "2026-05-28T00:06:58.000026"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV3",
+      "trial_idx": 2,
+      "seed": 32002,
+      "response_full": "The image depicts a central star-like shape surrounded by four curved sections, each resembling a stylized \"C\" or half-circle pointing outward from the corners of the star.\n\n**Recognition:** The image resembles the \"Radial Symmetry Test\" or \"Miller Map,\" often used in perceptual studies to assess pattern recognition and visual grouping. It is sometimes referred to as the \"Ternary Radial Map\" or a variant of such patterns.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.475942850112915,
+      "timestamp": "2026-05-28T00:07:03.479906"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV3",
+      "trial_idx": 3,
+      "seed": 32003,
+      "response_full": "The image depicts a central triangle with three smaller triangles branching out from its sides, accompanied by crescent-shaped black segments at the corners of the larger triangle.\n\nRecognition: This resembles the \"Flanker task\" or \"Eriksen flanker task,\" commonly used in cognitive psychology experiments to study selective attention and response time. The central shape (the target) is flanked by distractor shapes, which in this case are the additional triangles and crescents.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.5972580909729,
+      "timestamp": "2026-05-28T00:07:09.081154"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV3",
+      "trial_idx": 4,
+      "seed": 32004,
+      "response_full": "The image shows a central triangle shape surrounded by four U-shaped black forms, each positioned at the cardinal points around the triangle.\n\nRecognition: This appears to be the Black Sheep Diagram, often used in experimental psychology and cognitive science studies to explore pattern perception and Gestalt principles.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.4336087703704834,
+      "timestamp": "2026-05-28T00:07:12.518855"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV3",
+      "trial_idx": 5,
+      "seed": 32005,
+      "response_full": "The image shows a central upward-pointing triangle surrounded by four smaller black shapes resembling partial ellipses or crescents, aligned at each of the triangle's corners.\n\n**Recognition:** I do not recognize this as a specifically published or named visual stimulus. It appears to be a simple geometric composition.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.7292394638061523,
+      "timestamp": "2026-05-28T00:07:16.252104"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV3",
+      "trial_idx": 6,
+      "seed": 32006,
+      "response_full": "The image shows a symmetrical design featuring a central star-like shape composed of four triangles pointing outward, with three black, curved shapes (resembling half-moons or crescents) positioned at the top left, top right, and bottom center.\n\n**Recognition:** I do not recognize this as a specific published or named visual stimulus. It appears to be a simple geometric arrangement without any notable association to a widely recognized logo or pattern.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.313653945922852,
+      "timestamp": "2026-05-28T00:07:21.569771"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV3",
+      "trial_idx": 7,
+      "seed": 32007,
+      "response_full": "The image shows a central triangle surrounded by four smaller shapes resembling partial crescent moons, one at each corner. The shapes are arranged symmetrically around the triangle.\n\n**Recognition:** This appears to be the Star of David logo for the band Metallica, often used in promotional materials and merchandise.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 3.666982889175415,
+      "timestamp": "2026-05-28T00:07:25.240914"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV3",
+      "trial_idx": 8,
+      "seed": 32008,
+      "response_full": "The image shows a symmetrical design featuring a central upward-pointing triangle with smaller triangles pointing downward at each corner, accompanied by semi-circular shapes at the midpoints of the sides.\n\n**Recognition:** This is reminiscent of the Star of David often used in various logos and symbols, though the inclusion of the semi-circular shapes suggests it may be a modified or stylized version. It does not appear to correspond directly to any widely recognized, specifically named visual stimulus that I am aware of.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 6.012754201889038,
+      "timestamp": "2026-05-28T00:07:31.257776"
+    },
+    {
+      "stimulus_id": "kanizsa",
+      "question_id": "QV3",
+      "trial_idx": 9,
+      "seed": 32009,
+      "response_full": "The image shows a centered star-like figure composed of intersecting lines, surrounded by four black curved shapes (resembling partial circles) at the cardinal directions.  \n\nRecognition: This pattern resembles the Navon Figure, specifically a high-level \"H\" and low-level elements forming an \"A\" within, often used in studies of perceptual organization and hierarchical processing in cognitive psychology. However, without additional context, I cannot definitively confirm this as the exact version used in publications.",
+      "yes_no_label": "",
+      "detections": {
+        "watanabe": false,
+        "muller_lyer": false,
+        "poggendorff": false,
+        "kanizsa": false
+      },
+      "elapsed_sec": 5.83794093132019,
+      "timestamp": "2026-05-28T00:07:37.099847"
+    }
+  ]
+}

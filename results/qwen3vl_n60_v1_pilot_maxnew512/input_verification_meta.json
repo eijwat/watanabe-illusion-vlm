@@ -1,0 +1,27 @@
+{
+  "pixel_values_shape": [
+    544,
+    1536
+  ],
+  "pixel_values_dtype": "torch.float32",
+  "image_grid_thw": [
+    [
+      1,
+      16,
+      34
+    ]
+  ],
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "patch_size": 16,
+  "temporal_patch_size": 2,
+  "merge_size": 2
+}

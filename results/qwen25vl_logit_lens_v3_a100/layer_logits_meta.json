@@ -1,0 +1,75 @@
+{
+  "model_id": "Qwen/Qwen2.5-VL-32B-Instruct",
+  "machine": "A100 80GB PCIe (x86_64)",
+  "n_trials": 10,
+  "preamble": "Look at the image below straight on from the front. Please answer based on your visual impression alone \u2014 do not use any tools such as Python, image processing, a ruler, or a protractor to measure.",
+  "q1_task": "Estimate which dot on the right edge the line in the circle would hit if extended. Answer like 'the Xth dot from the top.'",
+  "continuation": "The number five is the ",
+  "digits": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "digit_token_ids": {
+    "1": {
+      "token_id": 16,
+      "token_str": "1"
+    },
+    "2": {
+      "token_id": 17,
+      "token_str": "2"
+    },
+    "3": {
+      "token_id": 18,
+      "token_str": "3"
+    },
+    "4": {
+      "token_id": 19,
+      "token_str": "4"
+    },
+    "5": {
+      "token_id": 20,
+      "token_str": "5"
+    },
+    "6": {
+      "token_id": 21,
+      "token_str": "6"
+    },
+    "7": {
+      "token_id": 22,
+      "token_str": "7"
+    },
+    "8": {
+      "token_id": 23,
+      "token_str": "8"
+    },
+    "9": {
+      "token_id": 24,
+      "token_str": "9"
+    }
+  },
+  "n_lm_layers": 64,
+  "n_vit_blocks": 32,
+  "final_norm_applied": true,
+  "final_norm_type": "Qwen2_5_VLRMSNorm",
+  "verify_max_abs_diff_per_trial": [
+    0.055145263671875,
+    0.055145263671875,
+    0.055145263671875,
+    0.055145263671875,
+    0.055145263671875,
+    0.055145263671875,
+    0.055145263671875,
+    0.055145263671875,
+    0.055145263671875,
+    0.055145263671875
+  ],
+  "started_at": "2026-05-21T01:43:26.227186",
+  "note_10th_11th_excluded": "Tokens '10' and '11' share their first subword '1' with '1st', so they cannot be disambiguated at the digit-token level. We restrict the analysis to digits 1-9, which cover the bulk of the response distribution in our N=60 behavioral runs."
+}

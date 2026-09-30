@@ -1,0 +1,41 @@
+probe_id,condition,target,representation,n_samples,R2,MAE
+A.angle,all,angle_deg,visual.blocks[-1] mean-pool,68,0.9851486501818227,2.2282783283906826
+A.angle,standard,angle_deg,visual.blocks[-1] mean-pool,17,0.9480626557337568,4.082762774299173
+A.angle,no_circle,angle_deg,visual.blocks[-1] mean-pool,17,0.898588778433988,3.944044225356158
+A.angle,short_line,angle_deg,visual.blocks[-1] mean-pool,17,0.9617362646106609,3.0875225628123566
+A.angle,long_line,angle_deg,visual.blocks[-1] mean-pool,17,0.9430453780471109,4.064084557925954
+B.angle,all,angle_deg,merger output mean-pool,68,0.9807218174938316,2.4345342972699333
+B.angle,standard,angle_deg,merger output mean-pool,17,0.9458368353969783,3.6578207576976105
+B.angle,no_circle,angle_deg,merger output mean-pool,17,0.9134759528016113,3.507955326753504
+B.angle,short_line,angle_deg,merger output mean-pool,17,0.9582104082999,3.2240326825310204
+B.angle,long_line,angle_deg,merger output mean-pool,17,0.9540674769564237,3.3498440910788143
+A.spatial_y,all,target_y_right,visual.blocks[-1] mean-pool,68,0.8304362973931789,500.9458347455192
+A.spatial_y,standard,target_y_right,visual.blocks[-1] mean-pool,17,0.4924127943447162,883.1919422104778
+A.spatial_y,no_circle,target_y_right,visual.blocks[-1] mean-pool,17,0.5886077630084492,689.2916911764705
+A.spatial_y,short_line,target_y_right,visual.blocks[-1] mean-pool,17,0.5135002396530475,739.5442888327207
+A.spatial_y,long_line,target_y_right,visual.blocks[-1] mean-pool,17,0.559122074966218,774.9810621553307
+B.spatial_y,all,target_y_right,merger output mean-pool,68,0.8007378196991256,532.1015785845588
+B.spatial_y,standard,target_y_right,merger output mean-pool,17,0.4930883501256855,830.2193290441176
+B.spatial_y,no_circle,target_y_right,merger output mean-pool,17,0.6601406976199187,576.5341443589153
+B.spatial_y,short_line,target_y_right,merger output mean-pool,17,0.5549599982909895,679.5485156249999
+B.spatial_y,long_line,target_y_right,merger output mean-pool,17,0.5851167571795977,660.9136919806986
+A.dot_num,all,correct_dot_number,visual.blocks[-1] mean-pool,68,0.9698765143547997,0.7078168953166288
+A.dot_num,standard,correct_dot_number,visual.blocks[-1] mean-pool,17,0.9576024095186041,0.9369740205652574
+A.dot_num,no_circle,correct_dot_number,visual.blocks[-1] mean-pool,17,0.9188962782239392,1.045817122739904
+A.dot_num,short_line,correct_dot_number,visual.blocks[-1] mean-pool,17,0.8774847718244047,1.3630522840163286
+A.dot_num,long_line,correct_dot_number,visual.blocks[-1] mean-pool,17,0.9394300995355377,1.1240501123316147
+B.dot_num,all,correct_dot_number,merger output mean-pool,68,0.9726674435769973,0.6328599593218636
+B.dot_num,standard,correct_dot_number,merger output mean-pool,17,0.959409563577374,0.7213781020220589
+B.dot_num,no_circle,correct_dot_number,merger output mean-pool,17,0.938329713587235,0.9369338820962345
+B.dot_num,short_line,correct_dot_number,merger output mean-pool,17,0.9371022030472282,1.0145600262810202
+B.dot_num,long_line,correct_dot_number,merger output mean-pool,17,0.9518996818661152,1.0155018357669605
+C.spatial_y,all,target_y_right,merger output flattened (spatial),68,0.826971355451099,429.0778811465992
+C.spatial_y,standard,target_y_right,merger output flattened (spatial),17,0.6126830832322295,612.7852969898896
+C.spatial_y,no_circle,target_y_right,merger output flattened (spatial),17,0.6574999039651296,516.2671329273898
+C.spatial_y,short_line,target_y_right,merger output flattened (spatial),17,0.5498905638194592,572.2637396599265
+C.spatial_y,long_line,target_y_right,merger output flattened (spatial),17,0.6478278353008278,490.61893210018377
+C.dot_num,all,correct_dot_number,merger output flattened (spatial),68,0.9741111865111745,0.6108932214624742
+C.dot_num,standard,correct_dot_number,merger output flattened (spatial),17,0.9742554523591723,0.5705606236177332
+C.dot_num,no_circle,correct_dot_number,merger output flattened (spatial),17,0.9584159754634809,0.7332082075231215
+C.dot_num,short_line,correct_dot_number,merger output flattened (spatial),17,0.9563543154668273,0.8310726390165442
+C.dot_num,long_line,correct_dot_number,merger output flattened (spatial),17,0.9675064565812187,0.5769249691682703
