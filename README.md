@@ -128,7 +128,7 @@ Scripts that already take paths as options and need no editing: `analyze_commerc
 | `scripts/generate_stimuli.py` | Parametric stimuli (17 angles × 4 conditions = 68 images) |
 | `stimuli/stimulus_metadata.csv` | Ground truth for the 68 images (angle, intersection, dot counts, circle parameters) |
 | `scripts/measure_stimulus_v2.py` | Measures line angle, dot positions, and correct dot directly from the image |
-| `stimuli/control_muller_lyer.png`, `control_poggendorff.png`, `control_kanizsa.png` | Classical-illusion positive controls (Figure A1) |
+| `stimuli/control_muller_lyer.png`, `control_poggendorff.png`, `control_kanizsa.png` | Classical-illusion positive controls (Figure A1); from Wikimedia Commons, see *Third-party images* |
 | `stimuli/G1.png`, `G2.png`, `G3.png` | Screens shown in the Gorilla experiment |
 | `stimuli/104_jpg_ChatGPT_Image.png` | Output of the image-generation demonstration (Figure 1b) |
 
@@ -289,7 +289,18 @@ Citation information will be added upon publication.
 
 ## License
 
-MIT for code and CC BY 4.0 for stimuli and data
+- Code (`scripts/`, `Dockerfile.txt`, `requirements.txt`): MIT License — see [`LICENSE`](LICENSE).
+- Stimuli and data (`stimuli/`, `data/`, `prompts/`, `results/`): Creative Commons Attribution 4.0 International (CC BY 4.0) — see [`LICENSE-DATA`](LICENSE-DATA), except for the third-party images listed below.
+
+### Third-party images
+
+The classical-illusion controls in `stimuli/` (Figure A1) were taken from Wikimedia Commons and rasterized to PNG without other changes. They keep their original licenses:
+
+| File | Source | Author | License |
+|---|---|---|---|
+| `control_muller_lyer.png` | [Müller-Lyer Illusion - MathWorld version.svg](https://commons.wikimedia.org/wiki/File:M%C3%BCller-Lyer_Illusion_-_MathWorld_version.svg) | after F. C. Müller-Lyer (1889) | Public domain |
+| `control_poggendorff.png` | [Poggendorff illusion.svg](https://commons.wikimedia.org/wiki/File:Poggendorff_illusion.svg) | Fibonacci | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
+| `control_kanizsa.png` | [Kanizsa triangle.svg](https://commons.wikimedia.org/wiki/File:Kanizsa_triangle.svg) | Fibonacci | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
 
 ## Contact
 
