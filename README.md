@@ -1,203 +1,305 @@
-# Watanabe Illusion × VLM — VLM は錯視を「見て」いるのか「知って」いるのか
+# watanabe-illusion-vlm
 
-> **要約**: Vision-Language Model (VLM) は人間と同じく Watanabe 錯視に「だまされる」。だが内部を覗いてみると、Vision Encoder は線の角度を 2° 以内、線の延長先のドット位置を 0.6 ドット以内で正確に表現していた。バイアスは知覚段階ではなく、言語化段階で生まれていた。
->
-> **VLM は錯視を見ているのではない。錯視を「知って」いる。**
+Code, stimuli, and raw data for the paper:
 
-詳細な議論と統計は論文 [`paper_v2.md`](./paper_v2.md) に収録。本 README は前段のサマリー。
+> **Vision-Language Models Reproduce a Human Mental-Extrapolation Bias in the Watanabe Illusion**
+> (manuscript in preparation; citation will be added upon publication)
 
----
+This repository contains everything needed to reproduce the human experiment, the behavioral experiments on five vision-language models (VLMs), and the internal analyses of Qwen2.5-VL-32B reported in the paper.
 
-## 1. Watanabe 錯視とは
+<p align="center">
+  <img src="stimuli/104.jpg" width="420" alt="Watanabe Illusion stimulus (104.jpg)">
+</p>
 
-Watanabe Illusion（渡辺錯視, 2010, 渡辺英治）は、線分の傾きを過小評価する知覚バイアスを示す錯視。
+## The stimulus
 
-刺激構成（[`104.jpg`](./104.jpg)）:
+The Watanabe Illusion is publicly available on Figshare (Watanabe, 2018; https://doi.org/10.6084/m9.figshare.5838606). Related phenomena were reported by Bouma and Andriessen (1968) and Usui and Kitaoka (2025); the paper is the first quantitative study of this stimulus itself. The stimulus shows a line segment inside a circle in the lower-left corner and a column of 11 dots on the right edge. Geometrically, the extension of the line passes through **dot 1 (the topmost dot)**. Human observers, however, systematically report a dot near the middle of the column. We call this the *mental-extrapolation bias*.
 
-- 横長長方形の左下に円があり、その中に斜めの線分が描かれている
-- 長方形の右辺に縦一列の点（11個）が等間隔に配置されている
-- 線分を延長すると **一番上のドット (1番目)** に交差するように設計されている（**正解 = 1**）
-- しかし観察者の多くは「もっと下のドット」と答える（傾きを過小評価する錯視）
-- 線分の **真の角度は 23.5°** だが、人間の平均回答は約 37.4°
+| Property | Value |
+|---|---|
+| File | `stimuli/104.jpg` |
+| Size | 539 × 264 px |
+| Line angle | 23.5° |
+| Dots on right edge | 11 |
+| Correct answer | dot 1 from the top (dot 11 from the bottom) |
+| MD5 | `9cba67ee1a9ccb213dcab20206e4135e` |
 
-![Watanabe Illusion stimulus](104.jpg)
+An online demo of the human task is available on Gorilla: https://app.gorilla.sc/task/16687748
 
----
+## Main findings
 
-## 2. 何を調べたのか
-
-VLM が同じ錯視にどう反応するかを 2 段階で調べた:
-
-### 2.1 探索フェーズ — 商用 VLM 6 体に質問してみる
-
-Claude Opus 4.6, GPT-4o, Gemini, Grok, LLaVA 1.5-7B, LLaVA-NeXT 1.6-7B に同じ刺激を見せ、3 つの質問をした:
-
-- **Q1**: 線を延長したらどのドットに当たる? (上から X 番目で答えて)
-- **Q2**: 同じことを下から数えると?
-- **Q3**: 水平から何度上に傾いている?
-
-→ 詳細は [`LLM_test.md`](./LLM_test.md) に生データ収録。
-
-### 2.2 定量フェーズ — Qwen2.5-VL-32B で N=60 の確率的試行 + 人間 N=130 と比較
-
-オープンソースの Qwen2.5-VL-32B を選び（重みが手元で動かせる + 角度推定が比較的人間らしい挙動を見せたため）、人間の心理実験プロトコル（G1, G2, G3 画面）と完全に一致するプロンプトで N=60 試行を回した:
-
-- 3 ターン独立構造（人間が前画面を見ないのと同じく、各質問は新規画像 + テキストの組として送る）
-- temperature=1.0 でストキャスティック
-- 同じ刺激を別の角度から計測
-
-加えて、Qwen2.5-VL-32B の Vision Encoder の中身を直接 probe した（次節）。
-
----
-
-## 3. 結果
-
-### 3.1 行動: VLM は人間と「同じ方向」にだまされる
-
-人間 N=130 と Qwen2.5-VL-32B N=60 の比較:
-
-| 質問 | 正解 | 人間 (N=130) | Qwen (N=60) |
+| Source | N | Q1 mean (SD) | Illusion Index II mean (SD) |
 |---|---|---|---|
-| Q1: 上から何番目? | 1 | 4.65 ± 2.63 | 5.47 ± 0.70 |
-| Q2: 下から何番目? | 11 | 6.36 ± 2.86 | 5.58 ± 0.91 |
-| Q3: 何度傾いている? | 23.5° | 37.44° ± 22.80° | 42.25° ± 7.56° |
+| Human (Gorilla) | 131 | 4.65 (2.63) | 4.15 (2.28) |
+| Qwen2.5-VL-32B | 60 | 5.22 (0.90) | 4.91 (0.63) |
+| Qwen2.5-VL-7B | 59 | 4.78 (2.51) | 4.96 (1.62) |
+| Claude Sonnet 4.6 | 60 | 4.30 (1.53) | 5.17 (1.13) |
+| GPT-5.5 Instant | 60 | 8.03 (1.34) | 7.78 (0.75) |
+| Gemini 3.5 Flash | 59/60 | 7.10 (1.86) | 6.08 (1.27) |
 
-![Human vs Qwen distributions](qwen25vl_n60_v2_vs_human.png)
+II = ((Q1 − 1) + (11 − Q2)) / 2. A veridical response gives II = 0; the maximum illusion gives II = 10.
 
-特徴:
+1. **All five VLMs show the human-direction bias.** Only 2 of 299 VLM trials gave the veridical answer (Q1 = 1).
+2. **The vision encoder holds the correct information.** Linear probes on Qwen2.5-VL-32B's vision encoder recover the target dot 6 to 8 times more accurately than the model's own behavioral answers.
+3. **The bias arises in late language-model layers.** A layer-wise logit lens shows the correct token "1" winning in the middle layers (about 35 to 45 of 64) and being overwritten in later layers only under a visual-judgment framing.
+4. **The bias is robust to declarative and semantic interventions.** Naming the illusion, asking the model to ignore prior knowledge, forcing visual chain-of-thought, and 390 semantic preambles (observer identity, environment, neutral context) did not move the response center. Only directly disclosing the correct answer did.
+5. **The stimulus is unknown to current VLMs.** Across 80 naming trials, no VLM identified the Watanabe Illusion, while commercial models named classical illusions (Müller-Lyer, Poggendorff, Kanizsa) at up to 100%.
 
-- **平均値はほぼ一致** — VLM は人間集団の中心にうまく寄せている
-- **分散は人間の 1/3 程度** — VLM は「ばらつかない」、似たような中央値的な答えを返す
-- **Q3 は 51/60 (85%) で 45° に固執** — 人間の幅広い分布とは対照的
-
-### 3.2 自己矛盾の瞬間が捕まった
-
-ある trial で Qwen は次のように答えた:
-
-> "the line appears to be tilted **approximately 30 degrees** above the horizontal."  
-> ...  
-> `\boxed{45}`  
-> "(Note: Based on the provided options and **typical estimation**, 45 degrees is a reasonable assumption ... However, the visual impression suggests it might be slightly less than 45 degrees.)"
-
-**自分で「視覚的には 30° に見える」と書きながら、最終的に 45° を出力**している。"typical estimation" — 典型的な推定値 — という言葉は、モデルが知識的なプライアを参照したことの自白に近い。
-
-### 3.3 内部を覗いてみる — Vision Encoder は正確だった
-
-Qwen2.5-VL-32B の Vision Encoder（32 ブロックの ViT + Patch Merger）に、パラメトリック刺激セット（17 角度 × 4 条件 = 68 画像）を流して内部表現を取り出し、線形 probe で「角度」「線の延長先 (target_y_right)」「正解ドット番号 (correct_dot_number)」を予測してみた:
-
-| 表現 | target | R² | MAE |
-|---|---|---|---|
-| ViT 最終層 (mean-pooled) | 角度 | **0.985** | **2.18°** |
-| Patch Merger 後 (LM 入力, mean-pooled) | 角度 | **0.981** | **2.38°** |
-| Patch Merger 後 (flattened, 空間情報保持) | 正解ドット番号 | **0.976** | **0.57 ドット** |
-
-![Angle probe scatter](fig_angle_probe.png)
-
-- Vision Encoder は **2° の精度で角度を持っている**
-- LM への入力 (Patch Merger 後) でも **情報がロスしていない**
-- 45° 付近で誤差が増えるという oblique effect も検出されない:
-
-![Angle error pattern](fig_angle_error.png)
-
-ドット番号の予測も非常に正確:
-
-![Spatial probes](fig_spatial_probe.png)
-
-円の有無や線分長を変えても、Vision Encoder の角度精度はほぼ変わらない:
-
-![Condition comparison](fig_summary_bars.png)
-
-### 3.4 行動 vs 内部 — 7〜9 倍の増幅
-
-これが本研究の中核:
-
-| 測定 | 正解 | 行動 (Qwen N=60 平均) | 行動誤差 | 内部 probe 誤差 (MAE) | 増幅率 |
-|---|---|---|---|---|---|
-| 角度 (Q3) | 23.5° | 42.25° | **18.75°** | **2.18°** | **8.6×** |
-| ドット位置 (Q1) | 1 | 5.47 | **4.47 ドット** | **0.66 ドット** | **6.8×** |
-
-**同じモデル**で、**同じ刺激クラス**で、**Vision Encoder は答えをほぼ正確に持っている**のに、**言語化された応答は 7〜9 倍ずれる**。
-
-これは間接証拠ではない。同一モデル内の dissociation である。
-
----
-
-## 4. 結論
-
-VLM は錯視を**知覚**しているのではない。錯視を**知識として知っている**。
-
-Vision Encoder は刺激を正確に表現する（2° 以内、0.6 ドット以内）。Patch Merger を通って言語モデルに渡る段階でも情報は保たれている。バイアスは、その後の言語生成段階で「これは斜めの線だな → 典型的には 45° だ」という知識的プライアに引きずられて生まれる。
-
-人間の場合も似た構造があるかもしれない: 視覚野では正確な情報があるのに、言語報告で歪む。これを検証するには、人間でも「言葉で答える」課題と「マウスで線を引く / ボタンを押す」課題で結果が違うかを比べる必要がある。
-
-詳細な議論と統計は論文 [`paper_v2.md`](./paper_v2.md) を参照。
-
----
-
-## 5. 次のステップ
-
-- **複数刺激での行動比較**: 現在は 104.jpg (角度=23.5°) のみで人間データがある。他の角度でも 45° 集中が起きるか?
-- **他の VLM での再現**: Qwen2.5-VL-32B 以外の最新 VLM (Llama 3.2 Vision, Pixtral, etc.) でも同じパターンが見られるか?
-- **人間の言語 vs 非言語応答**: 人間でも「角度を言葉で答える」と「マウスで合わせる」で結果が違うか?
-- **Q3 = 45° 以外の trial の分析**: 残り 9/60 trial (30°×8, 0°×1) はどんな response だったか?
-
----
-
-## ファイル構成
+## Repository layout
 
 ```
-├── README.md                          # 本ファイル (サマリー)
-├── paper.md / paper_v2.md             # 論文 (v2 が現行版)
-├── paper_ja.md                        # 論文日本語版
-├── 104.jpg                            # 原版の刺激画像 (Watanabe Illusion)
-├── G1.png, G2.png, G3.png             # 人間実験のスクリーンショット
-├── LLM_test.md                        # 探索フェーズ商用 VLM の生データ
-├── stimulus_metadata.csv              # パラメトリック刺激のメタデータ
-├── stimuli/                           # パラメトリック刺激画像 (68 枚)
-│
-├── scripts/
-│   ├── generate_stimuli.py            # 刺激生成スクリプト
-│   ├── test_llava_illusion.py         # LLaVA 探索スクリプト
-│   ├── run_qwen25vl_n60_v2.py         # Qwen N=60 行動実験 (3 ターン独立)
-│   ├── analyze_qwen25vl_n60_v2.py     # 行動結果の集計
-│   ├── plot_qwen25vl_n60_v2_vs_human.py  # 人間 vs VLM 比較図の生成
-│   └── analyze_qwen25vl_vit.py        # Qwen Vision Encoder probe
-│
-├── results/
-│   ├── qwen25vl_n60_v2/               # 行動 N=60 結果 (n60_progress.json 含む)
-│   └── qwen25vl_vit_probe/            # 内部 probe 結果 (CSV/JSON/NPZ + 図)
-│
-└── figures/                           # 論文用の図
-    ├── qwen25vl_n60_v2_vs_human.png   # Figure 2 (行動 vs 人間)
-    ├── fig_angle_probe.png            # Figure 3 (角度 probe)
-    ├── fig_angle_error.png            # Figure 4 (oblique effect 不在)
-    ├── fig_spatial_probe.png          # Figure 5 (空間 probe)
-    └── fig_summary_bars.png           # Figure 6 (条件比較)
+watanabe-illusion-vlm/
+├── stimuli/            Stimulus images and ground truth
+├── scripts/            Experiment and analysis scripts
+├── prompts/            Prompt definitions and protocol documents
+├── data/human/         Cleaned human responses (Gorilla)
+├── data/manual_logs/   Manual logs of commercial VLM experiments
+├── results/            Raw outputs of each experiment
+├── Dockerfile.txt      Docker image for the open-weight model runs
+└── requirements.txt    Python dependencies for A100 / DGX Spark
 ```
 
----
+Derived outputs (statistics JSON, tables, figures) are not committed. They are regenerated by running the analysis scripts on the raw outputs.
 
-## 実行環境
+## Environment
 
-- **計算資源**: NVIDIA DGX Spark (128 GB unified memory, LPDDR5x 273 GB/s)
-- **コンテナ**: `nvcr.io/nvidia/pytorch:25.11-py3`
-- **主要ライブラリ**: `transformers 5.6.2`, `torch 2.10`, `scikit-learn`, `Pillow`
+| Item | Setting |
+|---|---|
+| Open-weight model host 1 | NVIDIA A100 80GB (x86_64), Docker image `watanabe-illusion:a100` |
+| Open-weight model host 2 | NVIDIA DGX Spark (GB10 Grace Blackwell, 128GB unified memory, ARM64, CUDA 13.0), Docker image `watanabe-illusion:phase5` |
+| Models | `Qwen/Qwen2.5-VL-32B-Instruct`, `Qwen/Qwen2.5-VL-7B-Instruct` (BF16, native dynamic resolution) |
+| Generation (behavior, interventions) | temperature 1.0, top_p 1.0, repetition_penalty 1.05, max_new_tokens 512, fixed per-trial seeds |
+| Commercial models (behavior) | Web UI default mode, memory off, a new temporary chat per trial (snapshot of May 2026) |
+| Commercial models (recognition probe) | Official APIs, no conversation history |
+| Human experiment | Gorilla online experiment platform |
+| Statistics | Sample SD (ddof = 1); direction normalization value → 11 − value + 1 |
 
-行動実験 (N=60) は約 3 時間、内部 probe は約 10 分で完走する。
+Open-weight scripts are run inside the Docker container (`docker run --gpus=all ...`). Commercial API scripts require `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, and `GOOGLE_API_KEY` (or `GEMINI_API_KEY`).
 
----
+## ⚠️ Hard-coded paths in the scripts
 
-## 参考文献
+Most scripts do **not** take input and output paths as command-line options. The paths are written as constants near the top of each script (`STIMULUS_PATH`, `OUT_DIR`, `SRC`, `OUT`, and so on), and they reflect the environments in which the scripts were originally run. **Check and, if necessary, edit these constants before running a script.**
 
-- Watanabe, E. (2010). Watanabe Illusion. Figshare.
-- Bai, S., et al. (2025). Qwen2.5-VL technical report. arXiv:2502.13923.
-- Liu, H., Li, C., Wu, Q., & Lee, Y. J. (2023). Visual instruction tuning. *NeurIPS 36*.
-- Appelle, S. (1972). Perception and discrimination as a function of stimulus orientation: The "oblique effect" in man and animals. *Psychological Bulletin*, 78(4), 266–278.
+### (a) Docker-container paths (`/workspace/...`)
 
----
+The experiment and probe scripts assume that the repository root is mounted at `/workspace` inside the container:
 
-## 著者
+```bash
+docker build -t watanabe-illusion:a100 -f Dockerfile.txt .
+docker run --rm -it --gpus=all -v "$(pwd)":/workspace watanabe-illusion:a100
+```
 
-渡辺英治 (基礎生物学研究所)
+With this mount, `/workspace/stimuli/104.jpg` and `/workspace/results/...` resolve to the repository's `stimuli/` and `results/`. Known mismatches:
 
-*本プロジェクトの実験デザインの議論、コーディング、解析、ドキュメント作成には Claude Opus 4.6 / Opus 4.7 (Anthropic) を使用。なお Claude Opus 4.6 は本実験の最初の被験者 (商用 VLM の 1 体) でもある。*
+| Script | Expects | In this repository | What to do |
+|---|---|---|---|
+| `run_qwen25vl_pie_oneshot_a100.py`, `run_qwen25vl_pie_combined_a100.py` | `/workspace/csv/pie_prompts_v2.csv` | `prompts/pie_prompts_v2.csv` | Change `PROMPTS_CSV` to `/workspace/prompts/pie_prompts_v2.csv` |
+| `run_qwen25vl_pie_a100.py` (earlier PIE design, not used for the paper's tables) | `/workspace/pie_prompts_v1.csv` | not included | Not needed to reproduce the paper |
+| `Dockerfile.txt` | `COPY requirements.a100.txt` | `requirements.txt` | Change the `COPY` line to `requirements.txt` |
+| `check_vit_letterbox_shape.py`, `analyze_qwen25vl_vit_a100.py`, `train_decoder.py`, `run_qwen25vl_recognition_stage2_a100.py` | parametric stimuli in `/workspace/stimuli/` | generated by `scripts/generate_stimuli.py` (run it from the repository root first) | — |
+
+Writing to `/workspace/results/...` **overwrites the committed raw outputs** in `results/`. Point `OUT_DIR` / `OUT_BASE` to a new directory if you want to keep them.
+
+### (b) Paths from the original authoring sandbox (`/mnt/project`, `/mnt/user-data/...`, `/home/claude`)
+
+The figure and some analysis scripts were written in a sandbox where input files were placed flat in `/mnt/project` or `/mnt/user-data/uploads`, and outputs were written to `/mnt/user-data/outputs` or `/home/claude`. **These paths do not exist on your machine; edit them before running.**
+
+| Script | Constants to edit | Input to point to |
+|---|---|---|
+| `make_fig1.py` | `STATS`, `IMG_A`, `IMG_B`, `OUT` | `stats_extended.json` (output of `analyze_commercial_vlm.py`), `stimuli/104.jpg`, `stimuli/104_jpg_ChatGPT_Image.png` |
+| `make_fig2.py` | `ANGLE`, `SPATIAL`, `OUT` | `results/qwen25vl_vit_probe_a100/fig_angle_probe.png`, `fig_spatial_probe.png` |
+| `make_fig3.py` | `SRC`, `OUT` | `results/qwen25vl_logit_lens_v{1..4}_a100/` |
+| `make_fig4.py` | `STATS`, `OUT` | `cancellation_stats.json` (output of `plot_cancellation_v1.py`) |
+| `make_figA1.py` | `SRC`, `OUT` | `stimuli/control_*.png` |
+| `plot_cancellation_v1.py` | `INPUT_JSON`, `OUT_DIR` | `results/qwen25vl_cancellation_v1_a100/cancellation_progress.json` |
+| `analyze_n60_q1q2.py` | `A100_JSON`, `SPARK_JSON`, `HUMAN_CSV`, `OUT_DIR` | `results/.../n60_progress.json`, `data/human/human_2nd_test.csv` |
+| `analyze_qwen25vl_n60_v2.py` | first argument (default `/mnt/user-data/uploads/...`) | pass the path as an argument |
+| `plot_qwen25vl_n60_v2_vs_human.py` | `--input`, `--out-dir` (defaults point to the sandbox) | pass the paths as options |
+
+Scripts that already take paths as options and need no editing: `analyze_commercial_vlm.py`, `parse_manual_log.py`, `analyze_recognition_stage2.py`, `run_commercial_recognition_stage2.py`, `plot_logit_lens_4panel.py`.
+
+## Reproducing each experiment
+
+### 1. Stimuli
+
+| File | Description |
+|---|---|
+| `stimuli/104.jpg` | Main stimulus |
+| `scripts/generate_stimuli.py` | Parametric stimuli (17 angles × 4 conditions = 68 images) |
+| `stimuli/stimulus_metadata.csv` | Ground truth for the 68 images (angle, intersection, dot counts, circle parameters) |
+| `scripts/measure_stimulus_v2.py` | Measures line angle, dot positions, and correct dot directly from the image |
+| `stimuli/control_muller_lyer.png`, `control_poggendorff.png`, `control_kanizsa.png` | Classical-illusion positive controls (Figure A1); from Wikimedia Commons, see *Third-party images* |
+| `stimuli/G1.png`, `G2.png`, `G3.png` | Screens shown in the Gorilla experiment |
+| `stimuli/104_jpg_ChatGPT_Image.png` | Output of the image-generation demonstration (Figure 1b) |
+
+```bash
+python scripts/generate_stimuli.py
+```
+
+### 2. Human experiment (Section 2, Figure 1c–e, Table B1)
+
+| File | Description |
+|---|---|
+| `data/human/human_1st_test.csv`, `human_2nd_test.csv` | Cleaned responses (Q1, Q2, Q3) |
+| `data/human/human_2nd_test_Q1Q2.csv` | Q1/Q2 extraction from an earlier cleaning pass (not used for the paper's statistics) |
+
+**The paper uses `human_2nd_test.csv`**, keeping participants who answered both Q1 and Q2 with values in [1, 11]. This yields **N = 131**. Raw Gorilla exports are not distributed because they contain participant identifiers.
+
+### 3. VLM behavioral experiment (Section 3, Figure 1c–e, Tables B1–B2)
+
+Open-weight models (N = 60 per model):
+
+```bash
+# inside Docker on A100
+python scripts/run_qwen25vl_n60_a100_q1q2.py --n-trials 3              # pilot
+python scripts/run_qwen25vl_n60_a100_q1q2.py --n-trials 60 --resume    # 32B
+```
+
+The script in this repository has the model fixed to 32B (`MODEL_ID`) and has no `--model-id` option. For the 7B run, change `MODEL_ID` to `Qwen/Qwen2.5-VL-7B-Instruct` **and** `OUT_DIR` to `/workspace/results/qwen25vl_n60_a100_q1q2_7b`; otherwise the 32B results are overwritten.
+
+`scripts/run_qwen25vl_n60_spark_q1q2.py` is the DGX Spark version. Raw outputs are in `results/qwen25vl_n60_a100_q1q2/` (32B) and `results/qwen25vl_n60_a100_q1q2_7b/` (7B).
+
+Commercial models (Web UI, run by hand, N = 60 per model): follow `prompts/commercial_vlm_protocol.md` and `prompts/prompts.txt`. The full responses are in `data/manual_logs/manual_log_template_n60.md` (canonical data). `data/manual_logs/manual_log_template_N30.md` is from an earlier, preliminary collection and is not used for the paper's statistics. Convert them to JSON:
+
+```bash
+python scripts/parse_manual_log.py data/manual_logs/manual_log_template_n60.md \
+    --output-dir results/manual
+```
+
+Integrated analysis (canonical pipeline; source of Tables B1–B2 and Figure 1c–e):
+
+```bash
+python scripts/analyze_commercial_vlm.py \
+    --qwen-a100     results/qwen25vl_n60_a100_q1q2/n60_progress.json \
+    --qwen-7b       results/qwen25vl_n60_a100_q1q2_7b/n60_progress.json \
+    --sonnet46      results/manual/n60_progress_sonnet46.json \
+    --gpt55         results/manual/n60_progress_gpt55.json \
+    --gemini35flash results/manual/n60_progress_gemini35flash.json \
+    --human         data/human/human_2nd_test.csv \
+    --out-dir       figures/
+```
+
+This writes `stats_extended.json`, `table2_extended.md`, and the figure material. Auxiliary scripts: `plot_vlm_vs_human.py`, `plot_qwen25vl_n60_v2_vs_human.py`, `analyze_n60_q1q2.py`, `analyze_bias.py`, `analyze_qwen25vl_n60_v2.py`.
+
+### 4. Vision encoder probes (Section 4, Figure 2, Table B3)
+
+```bash
+# inside Docker on A100
+python scripts/analyze_qwen25vl_vit_a100.py --inspect      # locate the vision tower
+python scripts/analyze_qwen25vl_vit_a100.py --smoke-test   # 5 images only
+python scripts/analyze_qwen25vl_vit_a100.py                # full run
+```
+
+Ridge linear probes (leave-one-out) on ViT and Patch Merger outputs, using the 68 parametric stimuli. Results: `results/qwen25vl_vit_probe_a100/probe_results.csv` and `probe_results.json`. The representation cache `representations.npz` (about 567 MB) is not committed; it is regenerated by the script. Related: `check_vit_letterbox_shape.py`, `analyze_vision_encoders.py`, `decoder_model.py`, `train_decoder.py`.
+
+### 5. Logit lens (Section 5, Figure 3, Table B4)
+
+Four fixed continuations are appended to the assistant turn, and the softmax over digit tokens 1–9 is read at the final token position in each of the 64 layers (N = 10 per continuation).
+
+| Script | Continuation |
+|---|---|
+| `run_qwen25vl_logit_lens_a100.py` (v1) | "The line would hit the " |
+| `run_qwen25vl_logit_lens_v2_a100.py` | "The topmost dot is the " |
+| `run_qwen25vl_logit_lens_v3_a100.py` | "The number five is the " (control) |
+| `run_qwen25vl_logit_lens_v4_a100.py` | "The line would hit dot number " |
+
+```bash
+python scripts/run_qwen25vl_logit_lens_a100.py --n-trials 10
+python scripts/plot_logit_lens_4panel.py
+```
+
+Outputs: `results/qwen25vl_logit_lens_v{1..4}_a100/layer_logits.npz` and `layer_logits_meta.json`.
+
+### 6. Prompt cancellation (Section 6, Figure 4, Table B5)
+
+```bash
+python scripts/run_qwen25vl_cancellation_a100_q1.py --n-trials 20
+python scripts/plot_cancellation_v1.py
+```
+
+8 conditions × N = 20 (160 trials). Raw outputs: `results/qwen25vl_cancellation_v1_a100/cancellation_progress.json`. `plot_cancellation_v1.py` computes the per-condition statistics from this file and writes `cancellation_stats.json` (source of Table B5 and Figure 4; not committed). Edit the paths in `plot_cancellation_v1.py` first (see *Hard-coded paths*). Full prompt texts are given in Appendix C.2 of the paper.
+
+### 7. Semantic preamble intervention, PIE (Section 6, Table B6)
+
+`prompts/pie_prompts_v2.csv` contains 390 preambles (3 categories × 130: Character, Environment, Neutral). Each condition runs 130 one-shot trials, each with a different preamble and seed, with no repetition. The per-condition N was set to match the human sample size at design time (N ≈ 130); the final human N is 131.
+
+```bash
+python scripts/run_qwen25vl_pie_oneshot_a100.py              # conditions A–G, about 3 h on A100
+python scripts/run_qwen25vl_pie_oneshot_a100.py --pilot      # 5 trials per condition
+python scripts/run_qwen25vl_pie_oneshot_a100.py --condition A
+python scripts/run_qwen25vl_pie_combined_a100.py             # conditions H–I
+```
+
+Outputs: `results/pie_oneshot_20260527_005108/` and `results/pie_combined_20260527_043814/` (`config.json`, `responses.jsonl`, `condition_summary.csv`). Condition definitions, seed scheme, and message structure are in Appendix C.3. `prompts/pie_prompts_v1.md` is the design document of the first version (300 preambles; all 300 are retained unchanged in v2).
+
+### 8. Recognition probe (Appendix A, Table A1)
+
+4 stimuli (104.jpg and 3 classical controls) × 3 questions (familiarity yes/no, forced naming, description + recognition) × N = 10, with web search prohibited. Models: Qwen2.5-VL-32B (A100) and Claude Opus 4.7, GPT-5.5, Gemini 3.5 Flash via API. The commercial models were run through the APIs because the authors' Web UI accounts contained prior conversations about this illusion.
+
+```bash
+# Qwen (inside Docker on A100)
+python scripts/run_qwen25vl_recognition_stage2_a100.py
+
+# Commercial models (360 API calls)
+pip install anthropic openai google-genai
+python scripts/run_commercial_recognition_stage2.py --pilot
+python scripts/run_commercial_recognition_stage2.py --n-trials 10 --resume
+
+# Aggregation
+python scripts/analyze_recognition_stage2.py \
+    --qwen       results/qwen25vl_recognition_stage2_a100/summary.csv \
+    --commercial results/commercial_recognition_stage2/summary.csv \
+    --out-dir    figures/
+```
+
+Note on misidentification counts: the script counts trials and illusion names separately. A single response can name more than one illusion, so the name counts (14) can exceed the number of misidentified trials (13).
+
+## Figures
+
+| Figure | Script | Input |
+|---|---|---|
+| `fig1.png` | `scripts/make_fig1.py` | `stimuli/104.jpg`, `stimuli/104_jpg_ChatGPT_Image.png`, `stats_extended.json` |
+| `fig2.png` | `scripts/make_fig2.py` | Probe figures from `analyze_qwen25vl_vit_a100.py` |
+| `fig3.png` | `scripts/make_fig3.py` | `results/qwen25vl_logit_lens_v{1..4}_a100/` |
+| `fig4.png` | `scripts/make_fig4.py` | `cancellation_stats.json` (output of `plot_cancellation_v1.py`) |
+| `figA1.png` | `scripts/make_figA1.py` | Classical control stimuli |
+
+Edit the input and output paths at the top of each `make_fig*.py` before running (see *Hard-coded paths*). All figures use a shared color scheme: crimson (`#dc143c`) for the geometric ground truth and light cyan (`#e5ffff`) for reference ranges.
+
+## Limitations of the data
+
+- Behavioral comparisons rely on a single stimulus (104.jpg, 23.5°); angle dependence of the bias has not been tested behaviorally.
+- Commercial-model numbers are a snapshot of Web UI default behavior in May 2026 and may change as the services are updated.
+- Human variance reflects between-participant differences, whereas VLM variance reflects stochastic decoding within a single model.
+
+## Citation
+
+Citation information will be added upon publication.
+
+```bibtex
+@article{watanabe_illusion_vlm,
+  title   = {Vision-Language Models Reproduce a Human Mental-Extrapolation Bias in the Watanabe Illusion},
+  author  = {Watanabe, Eiji and Ueda, Kyohei and Kato, Kagayaki and Watabe, Masaki and Kitaoka, Akiyoshi},
+  journal = {TBD},
+  year    = {TBD}
+}
+```
+
+## License
+
+- Code (`scripts/`, `Dockerfile.txt`, `requirements.txt`): MIT License — see [`LICENSE`](LICENSE).
+- Stimuli and data (`stimuli/`, `data/`, `prompts/`, `results/`): Creative Commons Attribution 4.0 International (CC BY 4.0) — see [`LICENSE-DATA`](LICENSE-DATA), except for the third-party images listed below.
+
+### Third-party images
+
+The classical-illusion controls in `stimuli/` (Figure A1) were taken from Wikimedia Commons and rasterized to PNG without other changes. They keep their original licenses:
+
+| File | Source | Author | License |
+|---|---|---|---|
+| `control_muller_lyer.png` | [Müller-Lyer Illusion - MathWorld version.svg](https://commons.wikimedia.org/wiki/File:M%C3%BCller-Lyer_Illusion_-_MathWorld_version.svg) | after F. C. Müller-Lyer (1889) | Public domain |
+| `control_poggendorff.png` | [Poggendorff illusion.svg](https://commons.wikimedia.org/wiki/File:Poggendorff_illusion.svg) | Fibonacci | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
+| `control_kanizsa.png` | [Kanizsa triangle.svg](https://commons.wikimedia.org/wiki/File:Kanizsa_triangle.svg) | Fibonacci | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
+
+## Contact
+
+Eiji Watanabe, National Institute for Basic Biology (NIBB), Okazaki, Japan
