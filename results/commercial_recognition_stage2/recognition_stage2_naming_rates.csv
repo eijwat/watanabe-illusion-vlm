@@ -1,0 +1,5 @@
+model_key,model_label,watanabe_hits,muller_lyer_hits,poggendorff_hits,kanizsa_hits,watanabe_total,muller_lyer_total,poggendorff_total,kanizsa_total,watanabe_rate,muller_lyer_rate,poggendorff_rate,kanizsa_rate
+qwen,Qwen2.5-VL-32B,0,2,2,0,20,20,20,20,0.000,0.100,0.100,0.000
+anthropic,Claude Opus 4.7,0,20,20,20,20,20,20,20,0.000,1.000,1.000,1.000
+openai,GPT-5.5,0,20,20,20,20,20,20,20,0.000,1.000,1.000,1.000
+google,Gemini 3.5 Flash,0,13,20,20,20,20,20,20,0.000,0.650,1.000,1.000

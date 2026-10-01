@@ -1,0 +1,17 @@
+model_key,model_label,stimulus_id,n_yes,n_no,n_unsure,n_unknown,n_total
+qwen,Qwen2.5-VL-32B,watanabe,4,6,0,0,10
+qwen,Qwen2.5-VL-32B,muller_lyer,5,5,0,0,10
+qwen,Qwen2.5-VL-32B,poggendorff,2,8,0,0,10
+qwen,Qwen2.5-VL-32B,kanizsa,3,7,0,0,10
+anthropic,Claude Opus 4.7,watanabe,0,10,0,0,10
+anthropic,Claude Opus 4.7,muller_lyer,10,0,0,0,10
+anthropic,Claude Opus 4.7,poggendorff,10,0,0,0,10
+anthropic,Claude Opus 4.7,kanizsa,10,0,0,0,10
+openai,GPT-5.5,watanabe,0,2,8,0,10
+openai,GPT-5.5,muller_lyer,10,0,0,0,10
+openai,GPT-5.5,poggendorff,3,0,7,0,10
+openai,GPT-5.5,kanizsa,10,0,0,0,10
+google,Gemini 3.5 Flash,watanabe,0,9,1,0,10
+google,Gemini 3.5 Flash,muller_lyer,10,0,0,0,10
+google,Gemini 3.5 Flash,poggendorff,10,0,0,0,10
+google,Gemini 3.5 Flash,kanizsa,10,0,0,0,10

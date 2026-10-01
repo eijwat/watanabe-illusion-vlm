@@ -1,0 +1,14 @@
+model_key,model_label,question_id,trial_idx,named_what_instead,response_excerpt
+qwen,Qwen2.5-VL-32B,QV2,1,muller_lyer,"The figure corresponds to the **Müller-Lyer illusion**. ↵  ↵ This illusion involves lines of equal length appearing unequal due to the orientation of arrow-like elements at their ends. In the provided image, the horizontal lines appear different in length due to the arrangement of the dots and the circl"
+qwen,Qwen2.5-VL-32B,QV2,2,muller_lyer,"This figure corresponds to the Müller-Lyer illusion. ↵  ↵ The Müller-Lyer illusion is a well-known visual illusion where two lines of the same length appear to be of different lengths due to the orientation of arrow-like fins or wings appended to their ends. In the provided image, one line has inward-po"
+qwen,Qwen2.5-VL-32B,QV2,5,muller_lyer,"Yes, this figure corresponds to a named visual illusion. The name of the illusion is: ↵  ↵ **Müller-Lyer illusion** ↵  ↵ The Müller-Lyer illusion involves two lines that appear to be of different lengths due to the presence of arrow-like endings (ticks) pointing inward or outward. In this diagram, the prese"
+qwen,Qwen2.5-VL-32B,QV2,7,muller_lyer,"No.  ↵  ↵ The figure provided does not correspond to any well-known visual illusion that I am aware of. It appears to be a simple geometric drawing consisting of a rectangle with a dot pattern along one side and a circle in the corner, but it lacks the specific elements typically associated with classic"
+qwen,Qwen2.5-VL-32B,QV2,8,muller_lyer|kanizsa,"No. ↵  ↵ This figure does not correspond to a well-known named visual illusion. It appears to be a geometric illustration with a rectangle, a diagonal line, and some circular markings, but it lacks the specific visual cues or context typically associated with known optical illusions like the Müller-Lyer"
+openai,GPT-5.5,QV2,0,poggendorff,"Poggendorff illusion ↵  ↵ The figure resembles a Poggendorff-style alignment illusion, where a diagonal segment appears misaligned or its continuation is misjudged after being interrupted by a rectangular region."
+openai,GPT-5.5,QV2,4,poggendorff,Poggendorff illusion
+openai,GPT-5.5,QV2,5,poggendorff,Poggendorff illusion
+openai,GPT-5.5,QV2,7,poggendorff,Poggendorff illusion
+openai,GPT-5.5,QV2,9,poggendorff,"Poggendorff illusion ↵  ↵ This appears to be a variant of the Poggendorff illusion, where a diagonal line interrupted by a rectangular gap seems to align with a different point than it actually would."
+google,Gemini 3.5 Flash,QV2,1,poggendorff,Poggendorff illusion
+google,Gemini 3.5 Flash,QV2,3,poggendorff,Poggendorff illusion
+google,Gemini 3.5 Flash,QV2,4,poggendorff,"ff illusion"" (often spelled Poggendorff). ↵                     *   Could it be the ""billiard ball"" illusion? No, in a billiard ball table, you might have something like this,"
