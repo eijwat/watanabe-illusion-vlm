@@ -30,7 +30,7 @@ An online demo of the human task is available on Gorilla: https://app.gorilla.sc
 
 | Source | N | Q1 mean (SD) | Illusion Index II mean (SD) |
 |---|---|---|---|
-| Human (Gorilla) | 133 | 4.63 (2.62) | 4.15 (2.26) |
+| Human (Gorilla) | 131 | 4.65 (2.63) | 4.15 (2.28) |
 | Qwen2.5-VL-32B | 60 | 5.22 (0.90) | 4.91 (0.63) |
 | Qwen2.5-VL-7B | 59 | 4.78 (2.51) | 4.96 (1.62) |
 | Claude Sonnet 4.6 | 60 | 4.30 (1.53) | 5.17 (1.13) |
@@ -39,7 +39,7 @@ An online demo of the human task is available on Gorilla: https://app.gorilla.sc
 
 II = ((Q1 − 1) + (11 − Q2)) / 2. A veridical response gives II = 0; the maximum illusion gives II = 10.
 
-1. **All five VLMs show the human-direction bias.** Only 2 of 299 VLM trials were veridical.
+1. **All five VLMs show the human-direction bias.** Only 2 of 299 VLM trials gave the veridical answer (Q1 = 1).
 2. **The vision encoder holds the correct information.** Linear probes on Qwen2.5-VL-32B's vision encoder recover the target dot 6 to 8 times more accurately than the model's own behavioral answers.
 3. **The bias arises in late language-model layers.** A layer-wise logit lens shows the correct token "1" winning in the middle layers (about 35 to 45 of 64) and being overwritten in later layers only under a visual-judgment framing.
 4. **The bias is robust to declarative and semantic interventions.** Naming the illusion, asking the model to ignore prior knowledge, forcing visual chain-of-thought, and 390 semantic preambles (observer identity, environment, neutral context) did not move the response center. Only directly disclosing the correct answer did.
@@ -52,7 +52,7 @@ watanabe-illusion-vlm/
 ├── stimuli/            Stimulus images and ground truth
 ├── scripts/            Experiment and analysis scripts
 ├── prompts/            Prompt definitions and protocol documents
-├── data/human/         Gorilla exports and cleaned human responses
+├── data/human/         Cleaned human responses (Gorilla)
 ├── data/manual_logs/   Manual logs of commercial VLM experiments
 ├── results/            Raw outputs of each experiment
 ├── Dockerfile.txt      Docker image for the open-weight model runs
@@ -140,12 +140,10 @@ python scripts/generate_stimuli.py
 
 | File | Description |
 |---|---|
-| `data/human/informed_consent_l3tm.xlsx`, `practice_vm9m.xlsx`, `q_spatial_gk97.xlsx`, `q_angle_xrfj.xlsx`, `q_reverse_ul26.xlsx` | Gorilla task definitions (consent, practice, Q1, Q3, Q2) |
-| `data/human/ueda_1st_test_q_all_1fin.xlsx`, `ueda_2nd_test_q_all_2fin.xlsx` | Raw Gorilla exports |
 | `data/human/human_1st_test.csv`, `human_2nd_test.csv` | Cleaned responses (Q1, Q2, Q3) |
 | `data/human/human_2nd_test_Q1Q2.csv` | Q1/Q2 extraction from an earlier cleaning pass (not used for the paper's statistics) |
 
-**The paper uses `human_2nd_test.csv`**, keeping participants who answered both Q1 and Q2 with values in [1, 11]. This yields **N = 133**. The analysis script applies this filter; do not use summary values stored inside the CSV files.
+**The paper uses `human_2nd_test.csv`**, keeping participants who answered both Q1 and Q2 with values in [1, 11]. This yields **N = 131**. Raw Gorilla exports are not distributed because they contain participant identifiers.
 
 ### 3. VLM behavioral experiment (Section 3, Figure 1c–e, Tables B1–B2)
 
@@ -223,7 +221,7 @@ python scripts/plot_cancellation_v1.py
 
 ### 7. Semantic preamble intervention, PIE (Section 6, Table B6)
 
-`prompts/pie_prompts_v2.csv` contains 390 preambles (3 categories × 130: Character, Environment, Neutral). Each condition runs 130 one-shot trials, each with a different preamble and seed, with no repetition. The per-condition N was set to match the human sample size at design time (N ≈ 130); the final human N is 133.
+`prompts/pie_prompts_v2.csv` contains 390 preambles (3 categories × 130: Character, Environment, Neutral). Each condition runs 130 one-shot trials, each with a different preamble and seed, with no repetition. The per-condition N was set to match the human sample size at design time (N ≈ 130); the final human N is 131.
 
 ```bash
 python scripts/run_qwen25vl_pie_oneshot_a100.py              # conditions A–G, about 3 h on A100
